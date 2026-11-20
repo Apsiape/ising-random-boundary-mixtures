@@ -1,0 +1,78 @@
+\section{Recurrence, bias selection and empirical laws}\label{sec:laws}
+\subsection{Every mixture recurs}
+\begin{proof}[Proof of Theorem~\ref{thm:cluster}]
+For every rational pair $0<u<v<1$, Theorem~\ref{thm:lower} makes
+$\sum_n\Pp_{1/2}(u<T_n<v)=\infty$. Write $h_n$ for their hit probabilities. These events depend only on the disjoint effective collars $C_n$ and are independent. For completeness, independence gives
+\[
+ \Pp(\text{no hit from }N\text{ through }M)
+ =\prod_{n=N}^M(1-h_n)\le\exp\left(-\sum_{n=N}^M h_n\right)\longrightarrow0.
+\]
+Thus each rational interval is hit infinitely often, almost surely. Intersect these events over their countable basis. On this one probability-one event, every $\lambda\in(0,1)$ is approached by $T_{n_j}$ along an increasing subsequence, by choosing successively smaller rational intervals and a later hit in each. Lemma~\ref{lem:calibration} implies $\mu_{n_j}^\eta\Rightarrow\nu_\lambda$. Every cluster state is DLR and hence belongs to \eqref{eq:DLR}. Finally the cluster set of a sequence in a compact metric space is closed: a diagonal choice of increasingly late points within shrinking distances of converging cluster points proves this directly. It therefore also contains $\nu_0$ and $\nu_1$.
+\end{proof}
+
+\subsection{Biased boundaries}
+\begin{proof}[Biased part of Theorem~\ref{thm:laws}]
+At $p_n=1/2+n^{-2/5}$, Lemmas~\ref{lem:drift} and \ref{lem:transfer} imply, for every fixed $d>0$ and all large $n$,
+\[
+ \Pp_{p_n}(X_n<a_+-d)
+ \le Cn^2e^{-c n^{2/5}}+e^{-c'n^{1/5}}.
+\]
+Indeed positive $F_n$ of order $n^{3/5}$ has logistic value tending to one, and the transfer error vanishes. This bound is summable.
+
+Fix $p>1/2$. Eventually $p\ge p_n$. Couple exterior words coordinatewise by shared uniforms; ferromagnetic monotonicity makes $X_n$ increasing. Its lower-tail probability at $p$ is bounded by that at $p_n$. Summability implies that $X_n\ge a_+-d$ eventually almost surely: the probability of any failure after size $N$ is at most the tail sum, tending to zero. Intersect over positive rational $d$. For every boundary, $X_n$ is bounded above by its all-plus boundary value, which tends to $a_+$ by the definition of $\mu^+$. Hence $X_n\to a_+$ almost surely. Lemma~\ref{lem:calibration} gives $\mu_n^\eta\Rightarrow\mu^+$. Spin reversal treats $p<1/2$, including $p=0$; $p=1$ is the constant-plus boundary itself.
+\end{proof}
+
+\subsection{Fair concentration near the pure phases}
+\begin{lemma}[Fair anti-concentration]\label{lem:anticoncentration}
+For every $0<\alpha<1/2$,
+\[
+ \Pp_{1/2}(|F_n|\le n^\alpha)\longrightarrow0.
+\]
+\end{lemma}
+\begin{proof}
+Fix $\varepsilon>0$ and select $n$ of the north positions in Lemma~\ref{lem:tooth}. Call a position good when $d_v\ge g/2$. A bad position forces $R_{n,v}^++R_{n,v}^->g/2$ by \eqref{eq:gap}. For a sufficiently large fixed $D=D(\varepsilon)$, \eqref{eq:rem} makes each expected remainder eventually below $\varepsilon g/16$. Markov's inequality therefore shows that the event $G_D$ of at least $n/2$ good positions satisfies
+\[
+ \Pp_{1/2}(G_D^c)\le
+ \frac4{ng}\sum_v\E(R_{n,v}^++R_{n,v}^-)\le\varepsilon
+\]
+for large $n$. No independence among these positions is needed.
+
+Put $w=n^\alpha$ and clip $F_n$ to $[-w-4K,w+4K]$, obtaining an increasing function $f$. Whenever $|F_n(\eta)|\le w$, the two values of every bit pair stay within this clipping interval; hence $\osc_i f=\osc_i F_n$ there. On that event intersected with $G_D$, Lemma~\ref{lem:response} gives
+\[
+ \sum_i\osc_i f\ge(n/2)\gamma_Dg/2=n\gamma_Dg/4.
+\]
+Let $S$ count all $M_n$ exterior plus bits. Under the fair product law, conditioning on the other coordinates gives
+\[
+ \sum_i\E\osc_i f=4\Cov(f,S)
+ \le4\sqrt{\Var(f)\Var(S)}
+ \le2(w+4K)\sqrt{M_n}\le6(w+4K)\sqrt n.
+\]
+All oscillations outside the specified event are nonnegative. Therefore
+\[
+ \Pp_{1/2}(|F_n|\le w)
+ \le\varepsilon+\frac{24(w+4K)}{\gamma_Dg\sqrt n}.
+\]
+Take $n\to\infty$ for this fixed $D$, and then $\varepsilon\downarrow0$. This order of limits is what permits $\gamma_D$ to be small.
+\end{proof}
+
+\begin{lemma}[Law of a single random state]\label{lem:law}
+Under the fair boundary law,
+\[
+ \mathcal L(\mu_n^\eta)\Rightarrow
+ \tfrac12\delta_{\mu^+}+\tfrac12\delta_{\mu^-}.
+\]
+\end{lemma}
+\begin{proof}
+Oddness of $F_n$ and Lemma~\ref{lem:anticoncentration} put asymptotic probability $1/2$ on each of its two diverging signs. Lemma~\ref{lem:transfer} and $\Pp(H_n^c)\to0$ imply
+$\mathcal L(X_n)\Rightarrow\tfrac12\delta_{a_+}+\tfrac12\delta_{a_-}$.
+Uniform calibration, Lemma~\ref{lem:calibration}, transfers this to the state space: $\pi(T_n)$ has asymptotic law $\tfrac12\delta_1+\tfrac12\delta_0$, and the distance of $\mu_n^\eta$ from $\nu_{\pi(T_n)}$ vanishes uniformly.
+\end{proof}
+
+\begin{proof}[Fair part of Theorem~\ref{thm:laws}]
+We give the bounded independent strong law needed for the empirical assertion. If $(Y_n)$ are independent, centred, and bounded by a common constant, then
+$\Var(\sum_{n\le N}Y_n)\le C N$. At $N=k^2$, Chebyshev bounds the probability of $|k^{-2}\sum_{n\le k^2}Y_n|>d$ by $C/(d^2k^2)$. The summable-tail argument gives convergence to zero along squares, on intersecting over positive rational $d$. Between $k^2$ and $(k+1)^2$, boundedness changes the normalized sums by $O(1/k)$. Thus $N^{-1}\sum_{n\le N}Y_n\to0$ almost surely.
+
+Apply this to a rational polynomial $P$ of finitely many fixed cylinder probabilities, evaluated at $\mu_n^\eta$, and subtract its expectation. Once its cylinder supports lie in $B_n$, the evaluation depends only on $C_n$, so these bounded variables are independent after finitely many terms. By Lemma~\ref{lem:law}, their expected empirical mean tends to $[P(\mu^+)+P(\mu^-)]/2$. Intersect the resulting probability-one events over the countable algebra of rational cylinder polynomials. This algebra determines weak convergence of laws on $\mathcal P(\Omega)$: it contains the constants, separates states, and its real uniform closure is all continuous functions by the Stone--Weierstrass theorem. Equivalently, uniform continuity first reduces to finitely many cylinder coordinates and polynomial approximation on their compact cube finishes the reduction. We obtain the empirical convergence asserted in Theorem~\ref{thm:laws}.
+
+For the mean of $X_n$, spin reversal gives $\E_{1/2}X_n=1/2$ exactly at every size. The variables $X_n$ are independent and bounded, so the same strong law directly gives their ordinary average $1/2$. This last calculation in fact needs no low-temperature condition. For the spin expectation rather than the plus-probability, the average is zero.
+\end{proof}

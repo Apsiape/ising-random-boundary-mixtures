@@ -1,0 +1,65 @@
+\section{Model and published inputs}\label{sec:model}
+\begin{definition}[Finite-volume states and collars]
+Let $\Omega=\{-1,+1\}^{\Z^2}$ with its product topology. The effective collar is
+\[
+ C_n=\{(\pm(n+1),y):|y|\le n\}\cup
+       \{(x,\pm(n+1)):|x|\le n\}.
+\]
+For $\sigma\in\{-1,+1\}^{B_n}$ and $\eta\in\{-1,+1\}^{C_n}$ set
+\[
+ W_n^\eta(\sigma)=\exp\left\{K\!\sum_{\substack{\{x,y\}\subset B_n\\|x-y|_1=1}}\sigma_x\sigma_y
+ +K\!\sum_{\substack{x\in B_n,\ y\in C_n\\|x-y|_1=1}}\sigma_x\eta_y\right\}.
+\]
+Then $\mu_n^\eta(\sigma)=W_n^\eta(\sigma)/Z_n(\eta)$. To view this as a measure on $\Omega$, fix the spins outside $B_n$ to the full field $\eta$. Such an extension does not affect local limits.
+\end{definition}
+There are $M_n=8n+4$ effective exterior sites. Each has exactly one incident bond into the square. At a corner of the square there are two distinct exterior neighbours. All points of $C_n$ have sup norm $n+1$, so the collars for distinct $n$ are disjoint. Their boundary words are therefore independent under $\Pp_p$.
+
+Choose an enumeration $(f_j)_{j\ge1}$ of all finite-cylinder indicators and metrize the space $\mathcal P(\Omega)$ by
+\[
+ d(\rho,\rho')=\sum_{j\ge1}2^{-j}|\rho(f_j)-\rho'(f_j)|.
+\]
+This space is compact. Every weak limit of states on growing squares satisfies the infinite-volume DLR equations: for a fixed finite set $V$ and a cylinder test $f$, the identity $\mu_n^\eta(f)=\mu_n^\eta(\gamma_V f)$ holds once the support and its interaction neighbours lie inside $B_n$. The function $\gamma_V f$ is again local and continuous. Passing to the limit gives the identity for every such $f$ and $V$.
+
+We record precisely the published estimates used below. Coquille--Velenik \cite[Theorem~1.1]{CV} applies to this zero-field, unit-bond, planar nearest-neighbour model whenever $K>K_c=\tfrac12\log(1+\sqrt2)$. For $0<\xi<1/2$ and $0<\delta<1/2-\xi$, one coefficient approximates all bounded tests supported in $B_{n^\xi}$, uniformly over boundary conditions, with error $O_K(\|f\|_\infty n^{-\delta})$. In particular $(\xi,\delta)=(1/4,1/8)$ is admissible. By applying it to DLR states and extracting the coefficients, one gets the Aizenman--Higuchi classification \cite[Corollary~1.1]{CV}:
+\begin{equation}\label{eq:DLR}
+ \cG_K=\{\nu_\lambda:0\le\lambda\le1\}.
+\end{equation}
+The plus and minus phases are distinct and spin reversals; hence $a_++a_-=1$ and $m>0$. Equation~(A.8) of \cite{CV}, which records the spatial relaxation of Bricmont, Lebowitz and Pfister \cite{BLP81} and of Chayes, Chayes and Schonmann \cite{CCS87}, and its spin-flip image give, for every finite domain $V$ and local test supported on $S\subset V$,
+\begin{equation}\label{eq:relax}
+ |\mu_V^\pm(f)-\mu^\pm(f)|
+ \le \|f\|_\infty |S|e^{-c_K\dist(S,V^c)}.
+\end{equation}
+Both hypotheses hold since $K>K_P>K_c$.
+
+The second input is the half-plane model with all wall spins plus, ordinary bonds one, and wall-to-bulk coupling $h=1$. Pfister--Velenik \cite[(3.17)]{PV} gives saturation of the surface-tension inequality for $K>K_c$ and $h\ge1$; their (3.25) identifies saturation with uniqueness of the surface Gibbs state. Thus this half-plane specification has a unique state. These are the wetting results of Fr\"ohlich--Pfister \cite{FP1,FP2}. In their normalization $h$ multiplies the physical wall bonds, so our wall has exactly $h=1$, including the allowed endpoint. Reflection or translation of the wall preserves these hypotheses.
+
+\begin{lemma}[Uniform identification by one marginal]\label{lem:calibration}
+Let $\pi(t)=\min(1,\max(0,t))$. Then
+\[
+ \sup_\eta d(\mu_n^\eta,\nu_{\pi(T_n(\eta))})\longrightarrow0.
+\]
+\end{lemma}
+\begin{proof}
+Otherwise take sizes tending to infinity and boundary words for which the distance is bounded away from zero. Compactness gives a subsequential limit $\rho$, which is DLR by the preceding argument and hence equals $\nu_\lambda$ by \eqref{eq:DLR}. Its origin plus-probability is $a_-+m\lambda$, so along this subsequence $T_n\to\lambda$. Continuity of $\lambda\mapsto\nu_\lambda$ contradicts the distance bound. The choice of exterior extension disappears from each fixed cylinder eventually.
+\end{proof}
+
+\begin{lemma}[Finite energy and monotone propagation]\label{lem:neighbor}
+Put
+\[
+ h_K(s)=\frac1{1+e^{-2Ks}},\quad
+ \epsilon_K=\frac1{1+e^{8K}},\quad
+ \kappa_K=\min_{s\in\{-4,-2,0,2\}}[h_K(s+2)-h_K(s)]>0.
+\]
+The conditional probability of either spin is at least $\epsilon_K$. Two Gibbs measures with ordered boundary or ordered pinned spins admit an ordered coupling. If $x$ is unpinned in both systems, $y$ is a nearest neighbour of $x$, and $d_z$ denotes the difference of the plus-probabilities at $z$ (with fixed spins counted as deterministic), then $d_x\ge\kappa_Kd_y$.
+\end{lemma}
+\begin{proof}
+The conditional plus-probability is $h_K$ of the sum of the four neighbours. Its range gives finite energy. Run single-site heat-bath updates in a fixed cyclic order, with shared uniforms, in the two finite systems. Monotonicity of $h_K$ preserves order, and positive transition probabilities give the unique stationary law in each system. A subsequential stationary coupling is ordered. At an update of $x$, if the coupled spins at $y$ differ, the upper neighbour sum exceeds the lower sum by at least two; the conditional plus-probability gap is at least $\kappa_K$. Taking expectation in the stationary coupling gives the assertion. The same argument allows fixed pinned vertices by omitting their updates.
+\end{proof}
+
+Here and below constants may depend on the fixed $K$, and later on a fixed buffer width. We distinguish these from the explicit positive margins
+\begin{equation}\label{eq:margins}
+ g=1-2B(K)>0,\quad
+ t=\frac{2K-\log3}{2}>0,\quad
+ \rho=3e^{t-2K}=e^{-t}<1.
+\end{equation}
+These are the only numerical low-temperature requirements in the contour arguments.

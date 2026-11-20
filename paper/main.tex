@@ -1,0 +1,79 @@
+\pdfoutput=1
+\providecommand{\DoNotLoadEpstopdf}{}
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.08in]{geometry}
+\usepackage{booktabs,array,enumitem,microtype,xcolor,needspace,upquote,multicol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[hypcap=false]{caption}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep}
+\setcounter{tocdepth}{1}
+\makeatletter
+\renewcommand*\@pnumwidth{2em}
+\@clubpenalty=10000
+\renewcommand*\l@section[2]{\addvspace{.15em}\@dottedtocline{1}{0pt}{2.4em}{\bfseries #1}{\bfseries #2}}
+\makeatother
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{maintheorem}{Theorem}
+\renewcommand{\themaintheorem}{\Alph{maintheorem}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\R}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\E}{\mathbb E}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\osc}{\operatorname{osc}}
+\newcommand{\logit}{\operatorname{logit}}
+\newcommand{\logistic}{\operatorname{logistic}}
+\newcommand{\TV}{\operatorname{TV}}
+\colorlet{rxaccent}{orange!80!black}
+\setlist[enumerate]{label=\textup{(\roman*)},leftmargin=2em,itemsep=3pt,topsep=4pt}
+\setlist[itemize]{leftmargin=1.7em,itemsep=2pt,topsep=4pt}
+\allowdisplaybreaks[2]
+\raggedbottom
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\hyphenation{Lemma Lemmas Theorem Theorems Proposition Propositions Definition Definitions}
+\hypersetup{pdftitle={Every phase mixture recurs: The planar Ising model with random boundary spins},pdfauthor={Seth Douglas and Nidhal Mghirbi},pdfsubject={Random boundary conditions, chaotic size dependence and metastates}}
+\title{Every phase mixture recurs\\The planar Ising model with random boundary spins}
+\author{Seth Douglas \and Nidhal Mghirbi}
+\date{Version 1.0.0, November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Which thermodynamic states recur when an Ising system grows through every square and its exterior spins are independent fair signs? We prove that every convex mixture of the plus and minus phases recurs almost surely in the two-dimensional nearest-neighbour model. The boundary bonds have the bulk coupling strength. The result holds at every finite inverse temperature $K>K_P$, where $K_P=0.9791163662\ldots$ is defined by an explicit Peierls sum. It proves, in this range, the full-sequence conjecture of van Enter, Neto\v cn\'y and Schaap. For each fixed interior window of mixture weights, its probability at size $n$ is at least a positive constant times $n^{-1/2}$. The proof combines contour comparisons, uniqueness at a uniform wall, and a count of pivotal boundary changes with arbitrarily small effects on the phase odds. We also prove almost-sure convergence along all sizes to the favoured pure phase for each nonzero boundary bias, and recover the equal two-atom empirical metastate at an explicit temperature range. Thus every mixture recurs, while the sizes near mixed states have density zero.
+\end{abstract}
+\begin{center}\resizebox{\textwidth}{!}{Claude Opus 5.5, GPT-6.1 Sol, GPT-6.2 Sol and GPT-6.2 Astra assisted with this work; the authors take responsibility for every claim.}\end{center}
+{\small\tableofcontents}
+\input{sections/introduction}
+\input{sections/model}
+\input{sections/contours}
+\input{sections/phase-odds}
+\input{sections/windows}
+\input{sections/laws}
+\input{sections/discussion}
+\input{sections/method}
+\appendix
+\input{sections/constants}
+\input{references}
+\end{document}

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "Please cite this preprint using the metadata below."
+type: software
+title: "Every phase mixture recurs: The planar Ising model with random boundary spins"
+version: 1.0.0
+date-released: '2026-11-19'
+license: CC-BY-4.0
+authors:
+  - family-names: Douglas
+    given-names: Seth
+    orcid: https://orcid.org/0009-0007-4708-3252
+  - family-names: Mghirbi
+    given-names: Nidhal
+    orcid: https://orcid.org/0009-0005-6534-1118
+keywords:
+  - Ising model
+  - random boundary conditions
+  - chaotic size dependence
+  - metastates
+  - Gibbs measures
+abstract: "For the planar nearest-neighbour Ising model with independent fair exterior spins and boundary bonds of the bulk strength, every convex phase mixture recurs almost surely along all square sizes at every fixed finite K > K_P = 0.9791163662... . Each fixed interior mixture window has probability at least a positive constant times n^(-1/2). Fixed nonzero bias selects its favoured pure phase almost surely along all square sizes. The fair empirical metastate has equal masses at the pure endpoints, recovering van Enter, Netocny and Schaap (2005, Theorem 3.4) for K > K_P."
+preferred-citation:
+  type: article
+  title: "Every phase mixture recurs: The planar Ising model with random boundary spins"
+  authors:
+    - family-names: Douglas
+      given-names: Seth
+    - family-names: Mghirbi
+      given-names: Nidhal
+  year: 2026
+  version: 1.0.0

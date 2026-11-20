@@ -1,0 +1,92 @@
+\section{Pinned-line odds and phase weights}\label{sec:odds}
+For an exterior coordinate $i$, write $\osc_iF_n$ for its value with that bit plus minus its value with that bit minus, with every other bit fixed.
+
+\begin{lemma}[Monotone odds and a lower response]\label{lem:response}
+The function $F_n$ is odd under simultaneous spin reversal, is increasing in every exterior bit, and $0\le\osc_iF_n\le4K$. At the north coordinate $i$ and depth-$D$ site $v$ of Lemma~\ref{lem:tooth},
+\begin{equation}\label{eq:response}
+ \osc_iF_n\ge \gamma_D d_v(\eta),\qquad
+ \gamma_D=(1-e^{-4K})\kappa_K^D>0,
+\end{equation}
+where $\kappa_K$ is the heat-bath increment of Lemma~\ref{lem:neighbor}. This holds for either current value of the bit in $\eta$.
+\end{lemma}
+\begin{proof}
+Spin reversal exchanges the pinned partition functions, proving oddness. Suppose first the current bit is minus. Switching it to plus multiplies each constrained weight by $e^{2K\sigma_y}$. Hence the change in $F_n$ is
+\[
+ \log\mu_n^{\eta,+J}(e^{2K\sigma_y})
+ -\log\mu_n^{\eta,-J}(e^{2K\sigma_y}).
+\]
+The two kernels are ordered by Lemma~\ref{lem:neighbor}. As a function of the plus-probability $u$, the logarithm here is
+\[
+ \log[e^{-2K}+(e^{2K}-e^{-2K})u],
+\]
+whose derivative is at least $1-e^{-4K}$. If the current bit is plus, compute the reversed tilt with $e^{-2K\sigma_y}$; the negative of its logarithm has the same lower derivative. This gives the lower bound using the gap at $y$ in the current kernels. Propagate that gap from $v$ along the $D$ unpinned vertical edges by Lemma~\ref{lem:neighbor}. The path avoids $J_n$ for fixed $D$ and large $n$. The upper bound follows because each log partition function changes by at most $2K$.
+\end{proof}
+
+\begin{lemma}[Near-fair drift]\label{lem:drift}
+There are constants $d_*>0$ and $c_*>0$ such that, at product bias $p_n=1/2+n^{-2/5}$,
+\begin{equation}\label{eq:drift}
+ \E_{p_n}F_n\ge d_* n^{3/5},\qquad
+ \Pp_{p_n}(F_n<\tfrac12 d_*n^{3/5})\le e^{-c_*n^{1/5}}
+\end{equation}
+for all sufficiently large $n$.
+\end{lemma}
+\begin{proof}
+Choose fixed $D$ so that each expected remainder in \eqref{eq:gap} is eventually below $g/8$, uniformly for $p\in[1/2,p_n]$. Then $\E_p d_v\ge3g/4$ at at least $n$ north positions. Differentiating the finite product distribution gives
+\[
+ \frac{d}{dp}\E_pF_n=\sum_{i\in C_n}\E_p\osc_iF_n
+ \ge\frac{3g\gamma_D}{4}n.
+\]
+Indeed conditioning on all coordinates other than $i$ makes their contribution the two-value difference $\osc_iF_n$; differentiation and summation is exact for the finite polynomial expectation. All omitted terms are nonnegative. Oddness gives $\E_{1/2}F_n=0$. Integrate over an interval of length $n^{-2/5}$, with $d_*=3g\gamma_D/4$. The lower-tail version of \eqref{eq:bd}, using $M_n\le9n$ oscillations at most $4K$ and deviation $d_*n^{3/5}/2$, gives \eqref{eq:drift}, for instance with $c_*=d_*^2/(288K^2)$.
+\end{proof}
+
+\subsection{A common mixture for the line events}
+The next step requires an exponentially accurate comparison because the two line events themselves have exponentially small probabilities.
+
+\begin{lemma}[Transfer of the line odds]\label{lem:transfer}
+On $H_n$ from Lemma~\ref{lem:ratios}, for some $c>0$ and all large $n$,
+\begin{equation}\label{eq:transfer}
+ \left|X_n-\left[a_-+m\logistic(F_n)\right]\right|
+ \le e^{-c n^{3/4}},\qquad
+ \logistic(z)=\frac{e^z}{1+e^z}.
+\end{equation}
+The event and the bound apply to the product and fixed-width block laws above.
+\end{lemma}
+\begin{proof}
+Let $R_n=\lfloor n^{9/10}\rfloor$. An interior open arc reaching the two-layer enlargement of $B_{R_n}$ has length at least $n-R_n-O(1)>n/2$ eventually. Lemma~\ref{lem:flip} makes its conditional probability at most $e^{-c n}$ on $H_n$. This also excludes, with that probability bound, the entering open interfaces in the fixed-collar convention of \cite[Appendix~A.2]{CV}: from the last visit to the physical perimeter before the first approach to the inner square, the interface uses only interior edges. With the same interior pairings this segment belongs to one of our interior arcs. Additional perimeter edges and their endpoint pairings cannot shorten this segment.
+
+For completeness, the circuit decomposition at \cite[(3.4)]{CV} works as follows. When no open interface enters the protected square, the outer boundary of its surrounding constant-sign region supplies a monochromatic circuit outside that square. At a diagonal contact use the same split geometry; the sites on the circuit then fix a single sign on the boundary of its interior domain. One can locate the outermost such circuit by revealing spins from the perimeter inwards. The event specifying it and its sign is determined by the revealed spins, so conditioning leaves the ordinary Gibbs law of that sign in its interior. Closed contours and unrevealed spins inside are summed over freely. This construction follows by tracing the separating edges: failure of any surrounding constant-sign circuit would continue a disagreement interface from the perimeter into the protected square. It is precisely the no-entering-interface alternative. The sign of this explored circuit defines a single mixture coefficient $\alpha_n\in[0,1]$ for all tests inside.
+
+The distance from $J_n$ to the circuit is at least $R_n-k_n-O(1)$. By \eqref{eq:relax}, adding back the exceptional crossing event, every indicator supported on $J_n\cup\{0\}$ satisfies
+\begin{equation}\label{eq:common}
+ \left|\mu_n^\eta(f)-\alpha_n\mu^+(f)-(1-\alpha_n)\mu^-(f)\right|
+ \le C|J_n|e^{-c(R_n-k_n-O(1))}+e^{-c'n}
+ \le\delta_n,
+\end{equation}
+where $\delta_n=e^{-c''n^{9/10}}$ after decreasing $c''>0$. On the exceptional event the definition of $\alpha_n$ can use either sign. This changes the bound by at most its probability. This argument uses the circuit step and (A.8), whose support is arbitrary; it does not substitute a growing line into the smaller-support hypothesis of Theorem~1.1 of \cite{CV}.
+
+Set
+\[
+ A_n=\mu^+(\sigma\equiv+\text{ on }J_n),\qquad
+ A_n^-=\mu^+(\sigma\equiv-\text{ on }J_n).
+\]
+Finite energy gives $A_n\ge\epsilon_K^{|J_n|}$. Also
+\begin{equation}\label{eq:linePeierls}
+ \frac{A_n^-}{A_n}\le
+ \sum_{\ell\ge |J_n|}4(\ell+2)3^{\ell-1}e^{-2K\ell}
+ \le e^{-c_1n^{3/4}}
+\end{equation}
+eventually. To prove the ratio, start in a finite plus-boundary square containing $J_n$. On the all-minus line event the connected minus cluster containing the whole line has a closed outer perimeter. Construct it from the union of cells of that cluster, filling bounded holes and resolving contacts in face order. It surrounds the origin, spans the line, has length at least $|J_n|$, and has disagreeing bonds on every edge. For each specified perimeter, flipping its filled interior is injective, multiplies the weight by $e^{2K\ell}$, and sends the event into the all-plus line event. The same ray-root count as in \eqref{eq:Bsum} bounds the number of perimeters. Divide the summed weights by the all-plus line weight, and then take the plus-state limit with $J_n$ fixed. This proves the first inequality of \eqref{eq:linePeierls}. The second follows from $r=3e^{-2K}<1$ and the polynomial factor in the sum.
+
+Let $P_+$ and $P_-$ be the unrestricted probabilities of the two constant-line events. Spin reversal of the pure phases and \eqref{eq:common} give
+\[
+ P_+=\alpha_n A_n+(1-\alpha_n)A_n^-+O(\delta_n),\quad
+ P_-=\alpha_n A_n^-+(1-\alpha_n)A_n+O(\delta_n).
+\]
+Their ratio is exactly $P_+/P_-=Z_n^+/Z_n^-=e^{F_n}$. Since $\delta_n/A_n\to0$ exponentially, division by their sum yields
+\[
+ |\logistic(F_n)-\alpha_n|
+ \le \frac{A_n^-}{A_n+A_n^-}+C\frac{\delta_n}{A_n}
+ \le e^{-c_2n^{3/4}}.
+\]
+Apply \eqref{eq:common} also to the origin indicator and absorb its error. This proves \eqref{eq:transfer} uniformly on $H_n$.
+\end{proof}

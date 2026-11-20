@@ -1,0 +1,112 @@
+\section{A lower bound in every fixed window}\label{sec:windows}
+The bounded one-bit response $4K$ alone cannot force visits to windows narrower than that bound. A long plus buffer reduces the response of its centre to any prescribed positive size. The derivative remains macroscopic because a positive density of centres have such buffers.
+
+\begin{lemma}[Arbitrarily small buffered changes]\label{lem:buffer}
+For every $\eps>0$ there is $L<\infty$ such that, for all sufficiently large $n$, a centre in the middle half of the north collar with $L$ plus bits on each side satisfies
+\[
+ 0\le\osc_iF_n<\eps
+\]
+uniformly over all the other exterior spins.
+\end{lemma}
+\begin{proof}
+Compute the response with the centre itself plus. Directly inside its $2L+1$ plus wall bits take the half-box
+\[
+ V_L=\{(x+j,n-k): -L\le j\le L,\ 0\le k\le L\}.
+\]
+For fixed $L$ and large $n$ this box avoids $J_n$. Condition either pinned ensemble on spins outside $V_L$. Ferromagnetic monotonicity brackets the conditional law by the two laws on $V_L$ with the same plus north wall and with the other three exterior sides all plus or all minus. Let $e_L$ be the difference of their plus-probabilities at $y=(x,n)$.
+
+As $L\to\infty$, any subsequential limit of either extremal half-box law satisfies the half-plane specification with the uniform plus wall. For every finite set this follows by passing its finite-range DLR identity to the limit; the other three sides recede to infinity. Uniform-wall uniqueness, with $h=1$ as checked in Section~\ref{sec:model}, makes all these limits identical. Compactness therefore implies $e_L\to0$. The bracketing is independent of the conditioned surroundings, pins, and distant exterior bits, proving the required uniformity.
+
+With the centre plus, changing it to minus tilts by $e^{-2K\sigma_y}$. The absolute derivative of
+\[
+ \log[e^{2K}+(e^{-2K}-e^{2K})u]
+\]
+in the one-site plus-probability $u$ is at most $e^{4K}-1$. The two pinned marginals at $y$ differ by at most $e_L$, so $\osc_iF_n\le(e^{4K}-1)e_L$. Choose $L$ with the last quantity strictly below $\eps$.
+\end{proof}
+
+\begin{lemma}[Drift and variance for buffered centres]\label{lem:blockdrift}
+Fix $L$ and use the block law $\Pp_q^{(L)}$ of Section~\ref{sec:contours}. There are $c_L>0$ and $C_L<\infty$ such that, uniformly for $|q-1/2|\le n^{-2/5}$ and all large $n$,
+\begin{equation}\label{eq:blockdrift}
+ \frac d{dq}\E_q^{(L)}F_n\ge c_Ln,\qquad
+ \Var_q^{(L)}(F_n)\le C_Ln.
+\end{equation}
+Also $\E_{1/2}^{(L)}F_n=0$.
+\end{lemma}
+\begin{proof}
+There are $N_0=\lfloor(2\lfloor n/2\rfloor+1)/b\rfloor$ complete blocks, where $b=2L+1$, so $N_0\ge n/(2b)$ eventually. A given centre is active with probability $a=2^{-2L}$, independently of $q$. The concentration and surface-separation estimates were proved for these independent blocks, including partially intersected blocks, in Lemmas~\ref{lem:ratios} and \ref{lem:tooth}.
+
+Choose the depth $D=D(L)$ so large that each of the two expected remainders at every centre is eventually below $ag/8$, uniformly over the specified $q$-window. From \eqref{eq:gap} and nonnegativity of the remainders,
+\begin{equation}\label{eq:activegap}
+ \E_q^{(L)}[\one_{\{i\text{ active}\}}d_v]
+ \ge ag-\E_q^{(L)}R_{n,v}^+-\E_q^{(L)}R_{n,v}^-
+ \ge\frac{3ag}{4}.
+\end{equation}
+This estimate is unconditional; activity is not imposed on a contour estimate. By \eqref{eq:response}, the mean active response is at least $3ag\gamma_D/4$. Conditional on buffers and inactive centres, differentiation in $q$ sums the oscillations over the active centres, whose bits are independent Bernoulli($q$). Averaging gives
+\[
+ \frac d{dq}\E_q^{(L)}F_n
+ \ge N_0\frac{3ag\gamma_D}{4}
+ \ge\frac{3ag\gamma_D}{8b}n.
+\]
+Thus $c_L=3ag\gamma_D/(8b)$ is permissible.
+
+Expose the independent whole blocks and singletons. Changing one group changes $F_n$ by at most $4Kb$ and there are at most $9n$ groups. The variance bound in \eqref{eq:bd} gives $C_L=36K^2b^2$. At $q=1/2$ the whole word is fair, so oddness gives mean zero. In particular neither $c_L$ nor $C_L$ depends on a subsequent choice of a tilt constant.
+\end{proof}
+
+\begin{proposition}[A window for the pinned odds]\label{prop:oddswindow}
+For every $z\in\R$ and $\eps>0$, there are $c(z,\eps)>0$ and $n_0$ such that
+\begin{equation}\label{eq:oddswindow}
+ \Pp_{1/2}(|F_n-z|<\eps)\ge c(z,\eps)n^{-1/2}
+ \qquad(n\ge n_0).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Choose $L$ by Lemma~\ref{lem:buffer} for jumps strictly below $\eps$, and fix the constants in Lemma~\ref{lem:blockdrift}. Take
+\[
+ A=1+\frac{16\sqrt{C_L}}{c_L},\qquad
+ q_\pm=\frac12\pm\frac A{\sqrt n}.
+\]
+For large $n$ these lie in $(0,1)$ and satisfy $|q_\pm-1/2|\le n^{-2/5}$. Integrating \eqref{eq:blockdrift} from $1/2$ puts the endpoint means respectively above $c_LA\sqrt n$ and below $-c_LA\sqrt n$. Once $|z|\le c_LA\sqrt n/2$, Chebyshev gives
+\begin{equation}\label{eq:straddle}
+ \Pp_{q_+}^{(L)}(F_n\le z)<1/16,\qquad
+ \Pp_{q_-}^{(L)}(F_n\ge z)<1/16,
+\end{equation}
+since $4C_L/(c_L^2A^2)<1/64$.
+
+Couple the whole family of laws by fixing all buffers and fair inactive bits, and taking independent uniform variables $U_i$ at the active centres: the centre is plus exactly when $U_i\le q$. Conditional on the buffers, let $N$ be their number and $S(q)$ their plus count. At each endpoint $S(q_\pm)$ has law $\operatorname{Bin}(N,q_\pm)$, where $N\le9n$. Its mean differs from $N/2$ by at most $9A\sqrt n$ and its variance is at most $9n/4$. With $B_*=9A+12$, Chebyshev and a union bound give
+\begin{equation}\label{eq:countband}
+ \Pp\left(\max_{q\in\{q_-,q_+\}}|S(q)-N/2|>B_*\sqrt n
+       \,\middle|\,\text{buffers}\right)\le1/32.
+\end{equation}
+Consequently with probability at least $1/2$ the endpoint values strictly straddle $z$ and both counts lie in this band. All intermediate counts lie in it too, by monotonicity.
+
+Almost surely the finitely many thresholds are distinct. On this event take the first flip in $(q_-,q_+)$ taking $F_n$ from a value at most $z$ to a value above $z$. It is an active flip, so Lemma~\ref{lem:buffer} makes both adjacent values lie strictly in $(z-\eps,z+\eps)$. This remains true if the preceding value equals $z$. Record such crossing flips only when their pre-flip count lies in \eqref{eq:countband}. Let $V$ be their number. The preceding event implies $\E V\ge1/2$.
+
+We bound $\E V$ by integration of a single uniform threshold. Fix a potential centre $i$ and its buffers. If it is active and $U_i=q$, all the other active centres at that threshold are independent Bernoulli($q$). If their plus count is $s$, the pre-flip count condition implies
+\[
+ |s-(N-1)/2|\le B_*\sqrt n+1.
+\]
+Their probability density relative to independent fair signs is
+\[
+ R_q=(2q)^s[2(1-q)]^{N-1-s}.
+\]
+Writing $\delta=q-1/2$ and using $\log(1+x)\le x$ gives
+\begin{equation}\label{eq:likelihood}
+ \log R_q\le 4\delta[s-(N-1)/2]\le4A(B_*+1)
+\end{equation}
+throughout the recorded band. This bound is uniform in the buffer word and in $N$, including small $N$. All inactive bits and buffers have the same distribution for every $q$.
+
+The crossing criterion depends only on the other bits, with bit $i$ assigned minus before and plus after the flip. On that criterion \emph{both} assignments have $|F_n-z|<\eps$. Under fair sampling of the other bits its probability, including the activity requirement, is therefore at most the unconditional fair window probability: averaging also over the independent fair bit $i$ preserves the window. There is no conditioning cost for any particular buffer pattern. Bound the tilted criterion by \eqref{eq:likelihood}, integrate $q$ over its interval of length $2A/\sqrt n$, and sum over at most $9n$ potential centres. It follows that
+\[
+ \frac12\le\E V
+ \le18A e^{4A(B_*+1)}\sqrt n\,
+       \Pp_{1/2}(|F_n-z|<\eps).
+\]
+Thus $[36A e^{4A(B_*+1)}]^{-1}$ is a permissible positive constant in \eqref{eq:oddswindow} once the large-size cutoffs above hold. Its size is immaterial for recurrence.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:lower}]
+Choose $z\in\R$ and $\eps>0$ so that the compact interval
+$\logistic([z-\eps,z+\eps])$ lies strictly inside $(u,v)$. On $H_n$, \eqref{eq:transfer} places $T_n$ in $(u,v)$ whenever $|F_n-z|<\eps$, for all sufficiently large $n$. The event $H_n^c$ has probability $o(n^{-1/2})$ by \eqref{eq:H}, so Proposition~\ref{prop:oddswindow} proves the lower bound after reducing its constant.
+
+If $U$ is a weakly open neighbourhood of $\nu_\lambda$ with $0<\lambda<1$, continuity of $\theta\mapsto\nu_\theta$ provides $0<u<v<1$ and a positive distance margin such that $\lambda\in(u,v)$ and $\nu_\theta\in U$ with that margin for $\theta\in[u,v]$. Lemma~\ref{lem:calibration} then puts $\mu_n^\eta$ in $U$ whenever $u<T_n<v$ and $n$ is large. Apply the already proved bound.
+\end{proof}
