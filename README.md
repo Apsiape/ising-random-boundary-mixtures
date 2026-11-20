@@ -2,7 +2,7 @@
 
 **The planar Ising model with random boundary spins**
 
-Seth Douglas and Nidhal Mghirbi. Preprint, version 1.0.0, November 2026.
+Seth Douglas and Nidhal Mghirbi. Preprint, version 1.0.0, November 2026. [Archive DOI](https://doi.org/10.5281/zenodo.24385704) (all versions); version 1.0.0: [10.5281/zenodo.24385705](https://doi.org/10.5281/zenodo.24385705)
 
 For the two-dimensional nearest-neighbour Ising model on centred squares with independent fair exterior spins and boundary bonds of the bulk strength, every convex mixture of the plus and minus phases is almost surely a subsequential limit along the full sequence of sizes. The result holds for every fixed finite inverse temperature K > K_P = 0.9791163662..., with K_P defined by an explicit Peierls sum in the paper.
 
@@ -26,6 +26,6 @@ The first page of the paper names the models that assisted with this work. The p
 
 ## Citation and license
 
-Douglas, Seth, and Nidhal Mghirbi (2026). *Every phase mixture recurs: The planar Ising model with random boundary spins*. Version 1.0.0. Citation metadata is in `CITATION.cff`; an archive DOI has not yet been assigned.
+Douglas, Seth, and Nidhal Mghirbi (2026). *Every phase mixture recurs: The planar Ising model with random boundary spins*. Version 1.0.0. [Archive DOI](https://doi.org/10.5281/zenodo.24385704) · [Citation metadata](CITATION.cff)
 
 Paper and documentation are licensed under CC BY 4.0; the build script under MIT or Apache 2.0, at your option. See `RIGHTS.md` and the license files.

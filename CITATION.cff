@@ -4,6 +4,7 @@ type: software
 title: "Every phase mixture recurs: The planar Ising model with random boundary spins"
 version: 1.0.0
 date-released: '2026-11-19'
+doi: 10.5281/zenodo.24385704
 license: CC-BY-4.0
 authors:
   - family-names: Douglas
@@ -29,3 +30,4 @@ preferred-citation:
       given-names: Nidhal
   year: 2026
   version: 1.0.0
+  doi: 10.5281/zenodo.24385705
