@@ -20,18 +20,36 @@ Choose an enumeration $(f_j)_{j\ge1}$ of all finite-cylinder indicators and metr
 \]
 This space is compact. Every weak limit of states on growing squares satisfies the infinite-volume DLR equations: for a fixed finite set $V$ and a cylinder test $f$, the identity $\mu_n^\eta(f)=\mu_n^\eta(\gamma_V f)$ holds once the support and its interaction neighbours lie inside $B_n$. The function $\gamma_V f$ is again local and continuous. Passing to the limit gives the identity for every such $f$ and $V$.
 
-We record precisely the published estimates used below. Coquille--Velenik \cite[Theorem~1.1]{CV} applies to this zero-field, unit-bond, planar nearest-neighbour model whenever $K>K_c=\tfrac12\log(1+\sqrt2)$. For $0<\xi<1/2$ and $0<\delta<1/2-\xi$, one coefficient approximates all bounded tests supported in $B_{n^\xi}$, uniformly over boundary conditions, with error $O_K(\|f\|_\infty n^{-\delta})$. In particular $(\xi,\delta)=(1/4,1/8)$ is admissible. By applying it to DLR states and extracting the coefficients, one gets the Aizenman--Higuchi classification \cite[Corollary~1.1]{CV}:
+We record precisely the published estimates used below. Each applies to this zero-field, unit-bond, planar nearest-neighbour model at every $K>K_c=\tfrac12\log(1+\sqrt2)$.
+
+\paragraph{Gibbs states and relaxation.}
+Coquille and Velenik \cite[Corollary~1.1]{CV} give the Aizenman--Higuchi classification
 \begin{equation}\label{eq:DLR}
  \cG_K=\{\nu_\lambda:0\le\lambda\le1\}.
 \end{equation}
-The plus and minus phases are distinct and spin reversals; hence $a_++a_-=1$ and $m>0$. Equation~(A.8) of \cite{CV}, which records the spatial relaxation of Bricmont, Lebowitz and Pfister \cite{BLP81} and of Chayes, Chayes and Schonmann \cite{CCS87}, and its spin-flip image give, for every finite domain $V$ and local test supported on $S\subset V$,
+The plus and minus phases are spin reversals; hence $a_++a_-=1$, and $m=a_+-a_-=\mu^+(\sigma_0)$ is the spontaneous magnetization. Yang's formula $\mu^+(\sigma_0)=(1-\sinh^{-4}2K)^{1/8}$ \cite{Yang52} (made rigorous in \cite{BGJS73}) shows that $m>0$, so the two phases are distinct. Equation~(A.8) of \cite{CV}, which records the spatial relaxation of Bricmont, Lebowitz and Pfister \cite{BLP81} and of Chayes, Chayes and Schonmann \cite{CCS87}, and its spin-flip image give, for every finite domain $V$ and local test supported on $S\subset V$,
 \begin{equation}\label{eq:relax}
  |\mu_V^\pm(f)-\mu^\pm(f)|
  \le \|f\|_\infty |S|e^{-c_K\dist(S,V^c)}.
 \end{equation}
-Both hypotheses hold since $K>K_P>K_c$.
+Up to a factor $2$, the case of a general finite $V$ also follows from the case of boxes. In the monotone coupling of $\mu_V^+$ with the restriction of $\mu^+$, which it dominates, the two configurations differ at a site $x$ with probability at most the corresponding difference for the plus law on the largest box about $x$ inside $V$.
 
-The second input is the half-plane model with all wall spins plus, ordinary bonds one, and wall-to-bulk coupling $h=1$. Pfister--Velenik \cite[(3.17)]{PV} gives saturation of the surface-tension inequality for $K>K_c$ and $h\ge1$; their (3.25) identifies saturation with uniqueness of the surface Gibbs state. Thus this half-plane specification has a unique state. These are the wetting results of Fr\"ohlich--Pfister \cite{FP1,FP2}. In their normalization $h$ multiplies the physical wall bonds, so our wall has exactly $h=1$, including the allowed endpoint. Reflection or translation of the wall preserves these hypotheses.
+\paragraph{Surface-order large deviations.}
+Let $\Lambda_L$ be a square box of side $L$. Ioffe \cite[Theorem~1.1, (1.5)]{Ioffe95} gives
+\begin{equation}\label{eq:ioffe}
+ \limsup_{L\to\infty}\frac1L\log\mu^+_{\Lambda_L}\Big(\sum_{x\in\Lambda_L}\sigma_x\le\frac m2|\Lambda_L|\Big)<0.
+\end{equation}
+His Hamiltonian counts each bulk bond once and gives the bonds to the plus exterior unit strength, as here, and his $m^*$ is our $m$. The threshold $m/2$ lies in his range $[-m,m]$; there his rate has droplet fraction $1/4$ and is strictly negative, since the surface tension is strictly positive for $K>K_c$ \cite{LP81}. Surface-order upper bounds of this kind are due to Schonmann \cite{Schonmann87} at low temperature and to Chayes, Chayes and Schonmann \cite{CCS87} for all $K>K_c$ (see \cite[Section~1]{Ioffe95}); \eqref{eq:ioffe} is Ioffe's sharp form, and only the strict negativity of the rate is used below. The exact Wulff rate is due to Dobrushin, Koteck\'y and Shlosman \cite{DKS92} and Pfister \cite{Pfister91} at low temperature and to Ioffe \cite{Ioffe95,Ioffe94} up to $K_c$, and the full phase-separation theory up to $K_c$ is due to Ioffe and Schonmann \cite{IoffeSchonmann98}.
+
+\paragraph{The dual model.}
+Put $w=e^{-2K}$ and let $K^*=\operatorname{artanh}w$ be the dual coupling of Kramers and Wannier \cite{KW41}. The map $K\mapsto\operatorname{artanh}e^{-2K}$ is decreasing and fixes $K_c$, so $0<K^*<K_c$ exactly when $K>K_c$. For the zero-field Ising model on the dual lattice $(\Z+\tfrac12)^2$ at the subcritical coupling $K^*$, Pfister and Velenik \cite[Proposition~2.4 and (6.46)]{PV99} bound the two-point function by $e^{-\tau(y-x)}$; by \cite[Propositions~2.1 and~2.2]{PV99} the decay rate $\tau$ equals the surface tension of the model at coupling $K$, a norm on $\R^2$ that is strictly positive since $K>K_c$. Hence there is $c_\tau=c_\tau(K)>0$ with
+\begin{equation}\label{eq:dualdecay}
+ \langle\sigma_x\sigma_y\rangle_{K^*}\le e^{-c_\tau\|x-y\|_\infty}.
+\end{equation}
+Section~\ref{sec:dual} also uses the random-line representation of \cite[Section~6]{PV99}, which applies to the zero-field free-boundary model with nonnegative couplings on any finite subgraph of the dual lattice. Its dual graphs are such subgraphs with the single coupling $K^*$, because every bond meeting the domain, including the boundary bonds, has the same coupling $K$.
+
+\paragraph{The uniform wall.}
+The last input is the half-plane model with all wall spins plus, ordinary bonds one, and wall-to-bulk coupling $h=1$. Fr\"ohlich and Pfister proved that its plus and minus surface states are extremal and that its surface Gibbs state is unique if and only if they coincide \cite{FP1}. They also proved that for $K>K_c$ the wall free-energy difference $\tau^--\tau^+$ equals the surface tension of the wall direction for every $h\ge1$, and that this saturation is equivalent to uniqueness \cite{FP2}; the surface tension is strictly positive for $K>K_c$ \cite{LP81}. Convenient statements are \cite[(3.17) and (3.25)]{PV}. In this normalization $h$ multiplies the physical wall bonds, so our wall has exactly $h=1$, the endpoint of that range. Thus this half-plane specification has a unique Gibbs state. Reflection or translation of the wall preserves these hypotheses.
 
 \begin{lemma}[Uniform identification by one marginal]\label{lem:calibration}
 Let $\pi(t)=\min(1,\max(0,t))$. Then
@@ -43,23 +61,24 @@ Let $\pi(t)=\min(1,\max(0,t))$. Then
 Otherwise take sizes tending to infinity and boundary words for which the distance is bounded away from zero. Compactness gives a subsequential limit $\rho$, which is DLR by the preceding argument and hence equals $\nu_\lambda$ by \eqref{eq:DLR}. Its origin plus-probability is $a_-+m\lambda$, so along this subsequence $T_n\to\lambda$. Continuity of $\lambda\mapsto\nu_\lambda$ contradicts the distance bound. The choice of exterior extension disappears from each fixed cylinder eventually.
 \end{proof}
 
-\begin{lemma}[Finite energy and monotone propagation]\label{lem:neighbor}
-Put
+\begin{lemma}[Order, association and propagation]\label{lem:neighbor}
+Consider Ising measures with coupling $K$ on a finite set of sites, with arbitrary real external fields; fixed and exterior spins enter as fields. Put
 \[
- h_K(s)=\frac1{1+e^{-2Ks}},\quad
- \epsilon_K=\frac1{1+e^{8K}},\quad
+ h_K(s)=\frac1{1+e^{-2Ks}},\qquad
  \kappa_K=\min_{s\in\{-4,-2,0,2\}}[h_K(s+2)-h_K(s)]>0.
 \]
-The conditional probability of either spin is at least $\epsilon_K$. Two Gibbs measures with ordered boundary or ordered pinned spins admit an ordered coupling. If $x$ is unpinned in both systems, $y$ is a nearest neighbour of $x$, and $d_z$ denotes the difference of the plus-probabilities at $z$ (with fixed spins counted as deterministic), then $d_x\ge\kappa_Kd_y$.
+\begin{enumerate}
+\item Such a measure is stochastically increasing in the fields. In particular two such measures with ordered fixed or exterior spins admit an ordered coupling.
+\item Such a measure is positively associated: increasing functions have nonnegative covariance.
+\item Let $\nu\succeq\nu'$ be stochastically ordered measures on $\{-1,+1\}^{B_n}$. Suppose that under both of them the conditional plus-probability of $\sigma_x$ given all other spins is $h_K$ of the sum of the four neighbouring spins of $x$, exterior ones read from $\eta$. If $y$ is a nearest neighbour of $x$ and $d_z=\nu(\sigma_z=+1)-\nu'(\sigma_z=+1)$, with exterior spins counted as deterministic, then $d_x\ge\kappa_Kd_y$.
+\end{enumerate}
 \end{lemma}
 \begin{proof}
-The conditional plus-probability is $h_K$ of the sum of the four neighbours. Its range gives finite energy. Run single-site heat-bath updates in a fixed cyclic order, with shared uniforms, in the two finite systems. Monotonicity of $h_K$ preserves order, and positive transition probabilities give the unique stationary law in each system. A subsequential stationary coupling is ordered. At an update of $x$, if the coupled spins at $y$ differ, the upper neighbour sum exceeds the lower sum by at least two; the conditional plus-probability gap is at least $\kappa_K$. Taking expectation in the stationary coupling gives the assertion. The same argument allows fixed pinned vertices by omitting their updates.
+Parts (i) and (ii) are Holley's monotone coupling \cite{Holley74} and the Harris--FKG inequality \cite{Harris60,FKG71}; we include short proofs. The conditional plus-probability of a site given the others is increasing in its neighbouring spins and in its field. Run single-site heat-bath updates in a fixed cyclic order, with shared uniforms, in two systems with ordered fields, starting from ordered configurations. Monotonicity of the conditional probabilities preserves order, and full sweeps have strictly positive transition probabilities, so each marginal converges to its Gibbs measure. A subsequential limit of the joint laws is an ordered coupling. This proves (i).
+
+For (ii) use induction on the number of sites; one site is immediate. Condition on one spin. The conditional measure of the remaining spins is again of the stated form, so the conditional covariance of two increasing functions is nonnegative by induction. Their conditional means are increasing functions of the conditioning spin by (i), and two increasing functions of one spin have nonnegative covariance. Adding the two terms of the conditional covariance identity proves association.
+
+For (iii), the function $G=h_K(\sum_{z\sim x}\sigma_z)-\kappa_K\one_{\{\sigma_y=+1\}}$ is increasing: raising $\sigma_y$ moves the neighbour sum from some $s\in\{-4,-2,0,2\}$ to $s+2$ and raises $h_K$ by at least $\kappa_K$. By the hypothesis on the conditional probabilities, $d_x-\kappa_Kd_y=\nu(G)-\nu'(G)\ge0$.
 \end{proof}
 
-Here and below constants may depend on the fixed $K$, and later on a fixed buffer width. We distinguish these from the explicit positive margins
-\begin{equation}\label{eq:margins}
- g=1-2B(K)>0,\quad
- t=\frac{2K-\log3}{2}>0,\quad
- \rho=3e^{t-2K}=e^{-t}<1.
-\end{equation}
-These are the only numerical low-temperature requirements in the contour arguments.
+Here and below constants may depend on the fixed $K$, and later on a fixed buffer width. Apart from the published inputs above, the temperature enters only through the strict inequalities $K^*<K_c$ and $m>0$, both valid at every $K>K_c$.

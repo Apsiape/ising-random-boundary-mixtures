@@ -1,6 +1,6 @@
 Every phase mixture recurs: The planar Ising model with random boundary spins
 Seth Douglas and Nidhal Mghirbi
-Version 1.0.0, November 2026
+Version 2.0.0, November 2026
 
 abstract.txt contains the abstract in plain text. main.pdf is the compiled preprint.
 The source consists of main.tex, sections/ and references.tex.

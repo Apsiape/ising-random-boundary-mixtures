@@ -1,0 +1,118 @@
+\section{Dual lines and exact conditioning}\label{sec:dual}
+This section writes a finite-volume model with its physical boundary in terms of the high-temperature expansion of the dual model. We use the random-line representation of Pfister and Velenik \cite[Section~6]{PV99} and its use with fixed boundary spins by Coquille and Velenik \cite[Appendix~A.2]{CV}. We need its exact form with the physical collar, including the corners, and two consequences: a comparison that prices any family of arcs by reversing a boundary interval, and the conditional law given all open arcs.
+
+Throughout this section $V=([x_1,x_2]\times[y_1,y_2])\cap\Z^2$ is a lattice rectangle with at least two sites in each direction. Its collar consists of the exterior sites with a neighbour in $V$. Each collar site has exactly one bond into $V$, and the two exterior neighbours of a corner site of $V$ are distinct. Every bond meeting $V$ has coupling $K$. For a collar word $\eta$ the weight, the measure $\mu_V^\eta$ and the partition function $Z_V(\eta)$ are defined as in Section~\ref{sec:model}. Distances and diameters use the sup norm.
+
+\subsection{The physical collar and dual sources}
+Let $G$ be the dual graph of $V$. Its vertices are the points of $(\Z+\tfrac12)^2$ in $[x_1-\tfrac12,x_2+\tfrac12]\times[y_1-\tfrac12,y_2+\tfrac12]$, and its edges join vertices at distance one. Each edge of $G$ crosses exactly one bond meeting $V$, and each such bond is crossed by exactly one edge. Order the collar sites cyclically around $V$, the two exterior neighbours of a corner of $V$ being consecutive. The boundary vertices of $G$ correspond bijectively to the gaps between cyclically consecutive collar sites. At a vertex on a side of $G$ the three crossed bonds form a path between two consecutive collar sites through two sites of $V$. At a corner of $G$ the two crossed bonds join the two exterior neighbours of a corner of $V$ through that corner. We call the boundary vertices of $G$ positions. A position is a transition of $\eta$ if its two collar sites carry different spins, and $\mathcal S(\eta)$ denotes the set of transitions.
+
+For a set $E$ of edges let $\partial E$ be its set of vertices of odd degree. For a subgraph $G'$ of $G$ and a set $Y$ of its vertices put
+\[
+ \mathcal Z_{G'}(Y)=\sum_{E\subset E(G'):\,\partial E=Y}w^{|E|},\qquad w=e^{-2K}.
+\]
+
+\begin{lemma}[Collar sources]\label{lem:sources}
+For $\sigma\in\{-1,+1\}^V$ let $E(\sigma)$ be the set of edges of $G$ crossing bonds whose endpoints disagree, exterior spins being read from $\eta$. Then $\sigma\mapsto E(\sigma)$ is a bijection onto the edge sets $E$ with $\partial E=\mathcal S(\eta)$, and
+\begin{equation}\label{eq:sources}
+ Z_V(\eta)=e^{K|E(G)|}\,\mathcal Z_G(\mathcal S(\eta)).
+\end{equation}
+If $a\ne b$ are positions and $I$ is either of the two collar intervals between them, the reversed word $\eta^I$ has $\mathcal S(\eta^I)=\mathcal S(\eta)\mathbin{\triangle}\{a,b\}$.
+\end{lemma}
+\begin{proof}
+Around an interior vertex of $G$ the four crossed bonds bound a plaquette, so the number of disagreements among them is even. At a position the crossed bonds form a path between two consecutive collar sites, so the parity of its disagreements records whether the position is a transition. Hence $\partial E(\sigma)=\mathcal S(\eta)$. Disagreements determine $\sigma$ by propagation from a collar site, so the map is injective.
+
+For surjectivity, temporarily join cyclically consecutive collar sites by auxiliary exterior edges, using a diagonal edge at each corner of $V$, and label each auxiliary edge by whether its endpoints disagree in $\eta$. Given $E$ with $\partial E=\mathcal S(\eta)$, label the bonds crossed by $E$ as disagreeing and the other bonds meeting $V$ as agreeing. The labels then sum to zero modulo $2$ around every bounded face of the enlarged planar graph: the interior plaquettes, the four-edge faces along the sides and the triangles at the corners. Every cycle of this graph is a sum modulo $2$ of bounded face boundaries, so the labels integrate to a spin configuration starting from one collar spin, and the auxiliary edges make it agree with $\eta$ on the whole collar. The auxiliary edges carry no energy.
+
+An agreeing bond contributes $e^K$ to the weight and a disagreeing bond $e^{-K}=e^Kw$, which gives \eqref{eq:sources}. Reversing the collar spins of an interval changes the transitions exactly at its two end positions.
+\end{proof}
+Lemma~\ref{lem:sources} is the form, for the physical collar with its corners, of \cite[(A.2)]{CV} and \cite[Lemma~6.2]{PV99}; Lemma~\ref{lem:openlaw} below makes explicit, for the same collar, the sets $\mathfrak F(\Gamma)$ and $\Lambda(\Gamma)$ of \cite[Appendix~A.2]{CV} and the factorization \cite[Lemma~6.4]{PV99}.
+
+\subsection{Open arcs and their deletion}
+At each vertex the west and south directions are mates, as are the north and east directions. Every edge set $E$ decomposes into curves by the following local rule of \cite[Section~6.1]{PV99} and \cite[Appendix~A.2]{CV}. At a vertex where $E$ has degree four, each edge is paired with its mate. At degree three exactly one of the two pairs of mates is present; it is paired, and the remaining edge ends there. At a vertex on a side of $G$, where one direction is missing, this is the unique pair of mates available. At degree two the two edges are paired, and at degree one the edge ends there. Following paired edges decomposes $E$ into edge-disjoint closed and open curves, which may revisit a vertex. Each vertex of odd degree is an endpoint of exactly one open curve. We also call open curves arcs.
+
+For an open curve $\gamma$ from $a$ to $b$, let $\Delta_\gamma$ consist of its edges and of their mates at both ends of each edge, restricted to $G$. This is the edge-boundary of \cite[Lemma~6.1 and (6.8)]{PV99}. We write $G\setminus\Delta_\gamma$ for $G$ with the edges of $\Delta_\gamma$ removed.
+
+\begin{lemma}[Deleting an arc]\label{lem:deletion}
+Let $\gamma$ be an open curve from $a$ to $b$ occurring in some edge set, and let $Y$ be a set of vertices containing $a$ and $b$. An edge set $E$ with $\partial E=Y$ has $\gamma$ among its open curves if and only if $E$ contains the edges of $\gamma$ and no other edge of $\Delta_\gamma$. Consequently, if $a,b\in\mathcal S(\eta)$,
+\begin{equation}\label{eq:arcweight}
+ \mu_V^\eta(\gamma\text{ occurs})
+ =\frac{w^{|\gamma|}\,\mathcal Z_{G\setminus\Delta_\gamma}(\mathcal S(\eta)\setminus\{a,b\})}{\mathcal Z_G(\mathcal S(\eta))}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $\gamma$ occurs, an occupied mate of one of its edges would be paired with that edge and would belong to $\gamma$; so the other edges of $\Delta_\gamma$ are absent. Conversely, suppose that the edges of $\gamma$ are present and the other edges of $\Delta_\gamma$ absent. Where $\gamma$ passes through a pair of mates, these two edges remain paired at every possible degree. Where $\gamma$ passes through two edges that are not mates, the two unused directions are their mates and are absent, so the two edges are paired. At an endpoint of $\gamma$ the mate of its edge is absent and the degree is odd, so any further edges there form a complementary pair of mates, paired with each other. If $\gamma$ both ends at and passes through a vertex, its through pair stays paired and its terminal edge stays unpaired; two through visits use their own pairs. Hence $\gamma$ is traversed as specified whatever the remaining edges are, and these form an edge set of $G\setminus\Delta_\gamma$ with odd set $Y\setminus\{a,b\}$. Summing $w^{|E|}$ over such sets and using Lemma~\ref{lem:sources} gives \eqref{eq:arcweight}.
+\end{proof}
+
+For a subgraph $G'$ of $G$, let $\langle\cdot\rangle_{G'}$ denote the zero-field Ising model on the vertices of $G'$ with coupling $K^*$ on its edges and free boundary. Writing $e^{K^*\sigma_x\sigma_y}=\cosh K^*\,(1+w\sigma_x\sigma_y)$, since $\tanh K^*=w$, and summing over the spins gives
+\begin{equation}\label{eq:htexp}
+ \frac{\mathcal Z_{G'}(Y)}{\mathcal Z_{G'}(\varnothing)}=\langle\sigma_Y\rangle_{G'},\qquad
+ \sigma_Y=\prod_{x\in Y}\sigma_x.
+\end{equation}
+The two-source random-line weight of \cite[(6.8)]{PV99} is
+\begin{equation}\label{eq:lineweight}
+ \varphi_G(\gamma)=w^{|\gamma|}\frac{\mathcal Z_{G\setminus\Delta_\gamma}(\varnothing)}{\mathcal Z_G(\varnothing)}.
+\end{equation}
+Lemma~\ref{lem:deletion} with $Y=\{a,b\}$ and \eqref{eq:htexp} give the random-line representation $\sum_{\gamma}\varphi_G(\gamma)=\langle\sigma_a\sigma_b\rangle_G$ of \cite[(6.9)]{PV99}, the sum running over the open curves from $a$ to $b$.
+
+\begin{lemma}[Second Griffiths inequality]\label{lem:gks}
+If $G''\subset G'$ are subgraphs of a finite piece of the dual lattice, then $\langle\sigma_Y\rangle_{G''}\le\langle\sigma_Y\rangle_{G'}$ for every set $Y$ of vertices of $G''$.
+\end{lemma}
+\begin{proof}
+We include Ginibre's two-replica argument \cite{Ginibre70} for the second Griffiths inequality \cite{Griffiths67,KellySherman68}. Isolated vertices do not change correlations, so we may assume that both graphs have the same vertices. Give each edge $e$ a coupling $J_e\ge0$; deleting an edge sets its coupling to zero. The derivative of $\langle\sigma_Y\rangle$ in $J_e$ is the covariance of $\sigma_Y$ and $\sigma_W$, where $W$ is the endpoint set of $e$. For independent replicas $\sigma,\tau$, twice this covariance is the expectation of $(\sigma_Y-\tau_Y)(\sigma_W-\tau_W)$. Put $s_x=(\sigma_x+\tau_x)/2$ and $t_x=(\sigma_x-\tau_x)/2$. Each of the two differences expands with positive coefficients in monomials of odd degree in $t$. The replicated Boltzmann factor is $\exp\{2\sum_eJ_e(s_xs_y+t_xt_y)\}$, a power series with nonnegative coefficients. Under independent uniform replicas every monomial in the $s_x,t_x$ has nonnegative expectation, since $s_xt_x=0$ and the powers of each variable have nonnegative expectation by symmetry. The expansion converges absolutely in finite volume, so the derivative is nonnegative.
+\end{proof}
+
+\begin{lemma}[Reversal prices arcs]\label{lem:arcratio}
+Let $a\ne b$ be positions, $\mathcal L$ a set of open curves from $a$ to $b$, and $I$ either collar interval between $a$ and $b$. Then
+\begin{equation}\label{eq:arcratio}
+ \mu_V^\eta(\text{some }\gamma\in\mathcal L\text{ occurs})
+ \le\frac{Z_V(\eta^I)}{Z_V(\eta)}\sum_{\gamma\in\mathcal L}\varphi_G(\gamma).
+\end{equation}
+\end{lemma}
+\begin{proof}
+If $a$ or $b$ is not a transition, no open curve joins them. Otherwise the events for different $\gamma\in\mathcal L$ are disjoint, because $a$ is an endpoint of exactly one open curve. By \eqref{eq:arcweight}, \eqref{eq:htexp} and Lemma~\ref{lem:gks}, with $\mathcal S=\mathcal S(\eta)$,
+\[
+ \mu_V^\eta(\gamma\text{ occurs})
+ =\frac{w^{|\gamma|}\mathcal Z_{G\setminus\Delta_\gamma}(\varnothing)\langle\sigma_{\mathcal S\setminus\{a,b\}}\rangle_{G\setminus\Delta_\gamma}}{\mathcal Z_G(\mathcal S)}
+ \le\varphi_G(\gamma)\frac{\mathcal Z_G(\mathcal S\setminus\{a,b\})}{\mathcal Z_G(\mathcal S)}.
+\]
+By Lemma~\ref{lem:sources} the last ratio is $Z_V(\eta^I)/Z_V(\eta)$. Sum over $\mathcal L$.
+\end{proof}
+
+\subsection{The cost of a large diameter}
+\begin{lemma}[Diameter cost]\label{lem:arcs}
+There are $C,c_0>0$, depending only on $K$, such that for every rectangle $V$ as above, all distinct vertices $a,b$ of its dual graph $G$, and every $\ell\ge1$,
+\begin{equation}\label{eq:diam}
+ \sum_{\gamma:\,a\to b,\ \mathrm{diam}\,\gamma\ge\ell}\varphi_G(\gamma)\le Ce^{-c_0\ell},
+\end{equation}
+where the sum runs over open curves from $a$ to $b$ and $\mathrm{diam}$ is the diameter of the vertex set.
+\end{lemma}
+\begin{proof}
+Let $z$ be a vertex of $G$ other than $a$ and $b$. Split each open curve from $a$ to $b$ through $z$ at its first visit to $z$ into two edge-disjoint pieces, from $a$ to $z$ and from $z$ to $b$. Each piece is an open curve under the local rule, and the rule reassembles the two pieces into the original curve. The product inequality of \cite[Lemma~6.5]{PV99}, whose case of a single resulting curve is proved as \cite[Lemma~5.4]{PV97} (display (5.29) there is precisely the bound below), and the representation \cite[(6.9)]{PV99} give
+\begin{equation}\label{eq:split}
+ \sum_{\gamma:\,a\to b,\ \gamma\ni z}\varphi_G(\gamma)
+ \le\langle\sigma_a\sigma_z\rangle_G\,\langle\sigma_z\sigma_b\rangle_G.
+\end{equation}
+This is the splitting in the proof of \cite[Lemma~6.7]{PV99} and the first inequality of \cite[(A.6)]{CV}. For $z\in\{a,b\}$ the left side is at most $\langle\sigma_a\sigma_b\rangle_G$.
+
+By the second Griffiths inequality, Lemma~\ref{lem:gks}, adding vertices and edges to $G$ can only increase its correlations. Hence each correlation in $G$ is at most its limit along increasing dual boxes, the infinite-volume correlation of \eqref{eq:dualdecay}. Therefore the left side of \eqref{eq:split} is at most $e^{-c_\tau(\|a-z\|_\infty+\|z-b\|_\infty)}$ for every vertex $z$. A curve of diameter at least $\ell$ has a vertex at distance at least $\ell/2$ from $a$. There are $8j$ vertices of the dual lattice at distance $j$ from $a$, so summing over such vertices gives \eqref{eq:diam} with $C=\sum_{j\ge1}8je^{-c_\tau j/2}$ and $c_0=c_\tau/4$, uniformly in $V$, $a$ and $b$.
+\end{proof}
+
+\subsection{The law given all open arcs}
+\begin{lemma}[Conditioning on the open arcs]\label{lem:openlaw}
+Let $\Gamma$ be the family of all open curves of some configuration with collar word $\eta$, and let $\Delta_\Gamma=\bigcup_{\gamma\in\Gamma}\Delta_\gamma$. Let $\Theta_\Gamma$ be the set of sites of $V$ that are endpoints of bonds crossed by edges of $\Delta_\Gamma$.
+\begin{enumerate}
+\item The configurations whose family of open curves is $\Gamma$ are exactly those whose disagreement set contains the edges of $\Gamma$ and no other edge of $\Delta_\Gamma$.
+\item There is a configuration $\bar\sigma$ such that these configurations are exactly those agreeing with $\bar\sigma$ on $\Theta_\Gamma$.
+\item Call the nearest-neighbour components of $V\setminus\Theta_\Gamma$ free components. For each of them, $\bar\sigma$ takes a single sign $s$ on its sites and on all their neighbours outside it, collar sites included. Conditionally on $\Gamma$ the spins of distinct free components are independent, and each component has the Ising law with constant boundary $s$.
+\item Every site of $\Theta_\Gamma$ is within distance $2$ of a vertex of a curve of $\Gamma$. Hence every connected set of sites of $V$ at distance more than $2$ from all vertices of curves of $\Gamma$ lies in one free component.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(i) By Lemma~\ref{lem:deletion}, every curve of $\Gamma$ occurs exactly when its edges are present and the other edges of its $\Delta_\gamma$ are absent. No edge of one curve of $\Gamma$ is a mate of an edge of another, since they would be paired. The curves of $\Gamma$ use every vertex of odd degree, so there are then no further open curves.
+
+(ii) The edges of $\Gamma$ alone form an edge set with odd set $\mathcal S(\eta)$, so Lemma~\ref{lem:sources} gives a configuration $\bar\sigma$ whose disagreement set is exactly the edge set of $\Gamma$. Prescribing presence or absence on $\Delta_\Gamma$ prescribes, for each bond crossed by $\Delta_\Gamma$, whether its endpoints agree. Every component of the graph of these bonds contains a bond to the collar. Indeed, follow a curve of $\Gamma$ from its starting position. Its first edge crosses a collar bond, or it points inward and its tangential mate, which belongs to $\Delta_\Gamma$, crosses a collar bond sharing an endpoint with the first crossed bond. At a turn consecutive crossed bonds share an endpoint. At a straight passage the two crossed bonds are opposite sides of a plaquette, and the mates of the traversed edges cross the two other sides; on a side of $G$ one such mate, crossing the bond between the two adjacent sites of $V$, suffices. Each bond crossed by a mate shares an endpoint with the bond crossed by its partner. Repeated visits are covered by the same local facts. Propagation from the collar therefore fixes the spins on $\Theta_\Gamma$ to those of $\bar\sigma$. Conversely, spins equal to $\bar\sigma$ on $\Theta_\Gamma$ reproduce the prescribed disagreements on $\Delta_\Gamma$, hence the family $\Gamma$ by (i).
+
+(iii) The disagreeing bonds of $\bar\sigma$ are crossed by edges of $\Gamma$, so both their endpoints lie in $\Theta_\Gamma$ or the collar. Every bond with an endpoint in a free component therefore agrees in $\bar\sigma$, and $\bar\sigma$ is constant on each free component together with its outside neighbours. By (ii), conditioning on $\Gamma$ fixes the spins on $\Theta_\Gamma$ and leaves the free spins unrestricted. Restricting the Hamiltonian to the free sites gives the asserted product of constant-boundary laws.
+
+(iv) Every edge of $\Delta_\Gamma$ is an edge of a curve of $\Gamma$ or the mate of such an edge at one of its vertices, and the endpoints of the bond it crosses lie within distance one of that vertex.
+\end{proof}

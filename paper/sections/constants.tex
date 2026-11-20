@@ -1,29 +1,16 @@
-\section{Temperature margins and numerical checks}\label{sec:constants}
-The contour sum has the closed form
+\section{Scales and constants}\label{sec:constants}
+The temperature enters the proofs through the published inputs of Section~\ref{sec:model} and through two strict inequalities,
 \[
- \sum_{\ell\ge4}4(\ell+2)3^{\ell-1}e^{-2K\ell}
- =\frac43\sum_{\ell\ge4}(\ell+2)r^\ell
- =\frac43r^4\frac{6-5r}{(1-r)^2}.
+ K^*=\operatorname{artanh}e^{-2K}<K_c\qquad\text{and}\qquad m>0,
 \]
-It is strictly increasing in $r\in(0,1)$ because every coefficient in its series is positive, and it runs from zero to infinity. As $r=3e^{-2K}$ strictly decreases with $K$, there is a unique $K_P>\tfrac12\log3$ with $B(K_P)=1/2$. Equivalently its $r$-coordinate is the unique root in $(0,1)$ of
-\begin{equation}\label{eq:poly}
- 8r^4(6-5r)=3(1-r)^2.
-\end{equation}
-The threshold exceeds $K_c$, since $\tfrac12\log3>K_c$.
+both valid at every $K>K_c$. The first gives the decay rate $c_\tau>0$ of \eqref{eq:dualdecay} and hence $c_0>0$ in Lemma~\ref{lem:arcs}. The second gives the phase gap in \eqref{eq:gap} and the threshold $m/2$ in Lemma~\ref{lem:majority}. At finite $K$ the heat-bath increment $\kappa_K$ and the response factor $1-e^{-4K}$ are positive. No numerical threshold above $K_c$ enters.
 
-Here are all the numerical margins used in the proof. Choose $t=(2K-\log3)/2$, so the good-cap and long-curve ratio is $\rho=e^{-t}<1$. For short arcs, the conditional mean is eventually at most $t\ell/2$ and the bad-ratio exponent is $t^2\ell/(64K^2b^2)$. For long curves, the global allowance $n^{7/10}$ is $o(n^{3/4})$ and hence at most $t\ell$. The global disorder exponent remains $n^{2/5}/(288K^2b^2)$.
-
-With $g=1-2B(K)>0$, each expected remainder below $g/8$ gives expected phase separation at least $3g/4$. In the fair clipping argument, a good position has gap at least $g/2$; any bad position forces a remainder sum larger than $g/2$. The depth is chosen after the desired exceptional probability. For buffered blocks, first choose $L$ to make jumps smaller than the target window. With $a=2^{-2L}$, then choose each expected remainder below $ag/8$. This gives active expected separation at least $3ag/4$. Next choose $A$ from Lemma~\ref{lem:blockdrift}, and finally the lower size cutoff. The connected-line perimeter ratio needs only $3e^{-2K}<1$. Spatial relaxation and wall uniqueness require $K>K_c$, already satisfied. Thus no additional colder-temperature inequality enters the argument.
-
-At $K=\log4$ the useful checks are exact:
+Four scales appear. Near-fair biases satisfy $|p-1/2|\le n^{-2/5}$, so the mean odds in Lemma~\ref{lem:drift} grow like $n^{3/5}$. The interval cutoff of Lemma~\ref{lem:ratios} is $n^{7/10}$. The majority square has radius $k_n=\lfloor n^{4/5}\rfloor$. The cutoff for macroscopic arcs is $n/10$. The proofs use the comparisons
 \[
- r=\frac3{16},\quad B(K)=\frac{2187}{173056}<\frac1{25},\quad
- \epsilon_K=\frac1{65537},\quad
- \kappa_K=\frac1{257}-\frac1{65537}>0,
+ \tfrac25<\tfrac12,\qquad
+ \tfrac35<\tfrac7{10},\qquad
+ \tfrac7{10}<\tfrac45<1.
 \]
-\[
- 1-e^{-4K}=\frac{255}{256},\qquad e^{4K}-1=255.
-\]
-The equality for $\kappa_K$ follows by evaluating the four heat-bath increments: the smallest two are the symmetric increments at the extreme fields. The condition $B(K)<1/2$ then follows without rounding.
+The first places the tilted block laws $q_\pm=1/2\pm A/\sqrt n$ of Proposition~\ref{prop:oddswindow} inside the permitted bias range. The second makes the conditional mean $36Kn^{3/5}$ of an interval comparison negligible against the cutoff $n^{7/10}$, which leaves the disorder exponent $n^{2/5}/(288K^2b^2)$ in \eqref{eq:H}. In the third, the majority normalization $e^{n^{7/10}}$ of Lemma~\ref{lem:ratios}(iii) is beaten by the wrong-majority error $\delta_n=C_1e^{-c_1k_n}$ and by the macroscopic-arc bound $e^{-c_0n/10}$, and $k_n<n/2$ keeps the majority square inside the central component and away from the north strip.
 
-The threshold decimal can be reproduced by bisection of the rational polynomial \eqref{eq:poly} on $(0,1)$, followed by $K_P=\tfrac12\log(3/r)$. Rational evaluation certifies the bracket for $r$; evaluation of the logarithm gives the displayed decimal approximation. These numerical values illustrate the exact range, whose proof is the monotonicity and strict inequality above. They do not approximate a finite-volume Gibbs distribution. The proofs use no simulated evidence.
+Constants may depend on the fixed temperature and on the buffer width $b=2L+1$. For the window estimate the choices are made in the following order. First fix $K$ and the target window $(z,\eps)$. Then choose $L$ by Lemma~\ref{lem:buffer}, with activity probability $a_L=2^{-2L}$. Next choose an even depth $D\ge12$ so that each expected remainder is eventually below $a_Lm/8$, giving active expected separation at least $3a_Lm/4$. Then choose $A$ and $B_*$ from Proposition~\ref{prop:oddswindow}, and finally the lower size cutoff. In the fair anti-concentration argument a good position has gap at least $m/2$, and the depth is chosen after the desired exceptional probability.

@@ -24,33 +24,33 @@ Fix $p>1/2$. Eventually $p\ge p_n$. Couple exterior words coordinatewise by shar
 
 \subsection{Fair concentration near the pure phases}
 \begin{lemma}[Fair anti-concentration]\label{lem:anticoncentration}
-For every $0<\alpha<1/2$,
+For every nonnegative sequence $r_n=o(\sqrt n)$,
 \[
- \Pp_{1/2}(|F_n|\le n^\alpha)\longrightarrow0.
+ \Pp_{1/2}(|F_n|\le r_n)\longrightarrow0.
 \]
 \end{lemma}
 \begin{proof}
-Fix $\varepsilon>0$ and select $n$ of the north positions in Lemma~\ref{lem:tooth}. Call a position good when $d_v\ge g/2$. A bad position forces $R_{n,v}^++R_{n,v}^->g/2$ by \eqref{eq:gap}. For a sufficiently large fixed $D=D(\varepsilon)$, \eqref{eq:rem} makes each expected remainder eventually below $\varepsilon g/16$. Markov's inequality therefore shows that the event $G_D$ of at least $n/2$ good positions satisfies
+Fix $\varepsilon>0$ and select $n$ of the north positions in Lemma~\ref{lem:tooth}. Call a position good when $d_v\ge m/2$. A bad position forces $R_{n,v}^++R_{n,v}^->m/2$ by \eqref{eq:gap}. For a sufficiently large fixed even $D=D(\varepsilon)\ge12$, \eqref{eq:rem} makes each expected remainder eventually below $\varepsilon m/16$. Markov's inequality therefore shows that the event $G_D$ of at least $n/2$ good positions satisfies
 \[
  \Pp_{1/2}(G_D^c)\le
- \frac4{ng}\sum_v\E(R_{n,v}^++R_{n,v}^-)\le\varepsilon
+ \frac4{nm}\sum_v\E(R_{n,v}^++R_{n,v}^-)\le\varepsilon
 \]
 for large $n$. No independence among these positions is needed.
 
-Put $w=n^\alpha$ and clip $F_n$ to $[-w-4K,w+4K]$, obtaining an increasing function $f$. Whenever $|F_n(\eta)|\le w$, the two values of every bit pair stay within this clipping interval; hence $\osc_i f=\osc_i F_n$ there. On that event intersected with $G_D$, Lemma~\ref{lem:response} gives
+Clip $F_n$ to $[-r_n-4K,r_n+4K]$, obtaining an increasing function $f$. Whenever $|F_n(\eta)|\le r_n$, the two values of every bit pair stay within this clipping interval; hence $\osc_i f=\osc_i F_n$ there. On that event intersected with $G_D$, Lemma~\ref{lem:response} gives
 \[
- \sum_i\osc_i f\ge(n/2)\gamma_Dg/2=n\gamma_Dg/4.
+ \sum_i\osc_i f\ge(n/2)\gamma_Dm/2=n\gamma_Dm/4.
 \]
 Let $S$ count all $M_n$ exterior plus bits. Under the fair product law, conditioning on the other coordinates gives
 \[
  \sum_i\E\osc_i f=4\Cov(f,S)
  \le4\sqrt{\Var(f)\Var(S)}
- \le2(w+4K)\sqrt{M_n}\le6(w+4K)\sqrt n.
+ \le2(r_n+4K)\sqrt{M_n}\le6(r_n+4K)\sqrt n.
 \]
 All oscillations outside the specified event are nonnegative. Therefore
 \[
- \Pp_{1/2}(|F_n|\le w)
- \le\varepsilon+\frac{24(w+4K)}{\gamma_Dg\sqrt n}.
+ \Pp_{1/2}(|F_n|\le r_n)
+ \le\varepsilon+\frac{24(r_n+4K)}{\gamma_Dm\sqrt n}.
 \]
 Take $n\to\infty$ for this fixed $D$, and then $\varepsilon\downarrow0$. This order of limits is what permits $\gamma_D$ to be small.
 \end{proof}
@@ -63,7 +63,7 @@ Under the fair boundary law,
 \]
 \end{lemma}
 \begin{proof}
-Oddness of $F_n$ and Lemma~\ref{lem:anticoncentration} put asymptotic probability $1/2$ on each of its two diverging signs. Lemma~\ref{lem:transfer} and $\Pp(H_n^c)\to0$ imply
+Oddness of $F_n$ and Lemma~\ref{lem:anticoncentration}, with constant sequences $r_n$, put asymptotic probability $1/2$ on each of its two diverging signs. Lemma~\ref{lem:transfer} and $\Pp(H_n^c)\to0$ imply
 $\mathcal L(X_n)\Rightarrow\tfrac12\delta_{a_+}+\tfrac12\delta_{a_-}$.
 Uniform calibration, Lemma~\ref{lem:calibration}, transfers this to the state space: $\pi(T_n)$ has asymptotic law $\tfrac12\delta_1+\tfrac12\delta_0$, and the distance of $\mu_n^\eta$ from $\nu_{\pi(T_n)}$ vanishes uniformly.
 \end{proof}

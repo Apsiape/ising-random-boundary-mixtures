@@ -1,12 +1,23 @@
 \section{Boundary comparisons and separation near the surface}\label{sec:contours}
-Put $k_n=\lfloor n^{3/4}\rfloor$ and
+Put $k_n=\lfloor n^{4/5}\rfloor$ and, for $s\in\{+1,-1\}$,
 \[
- J_n=\{-k_n,\ldots,k_n\}\times\{0\}.
+ \mathcal A^s=\Big\{s\sum_{x\in B_{k_n}}\sigma_x>0\Big\}.
 \]
-Besides the unrestricted partition function $Z_n$, use $Z_n^+$ and $Z_n^-$, with every spin of $J_n$ fixed respectively to plus and minus. All three retain the physical boundary bonds. Superscripts $+$ and $-$ on these partition functions always mean the line constraint. Define
+Since $|B_{k_n}|$ is odd, $\mathcal A^+$ and $\mathcal A^-$ partition the configurations. Besides the unrestricted partition function $Z_n$, use $Z_n^s$, the sum of $W_n^\eta$ over $\mathcal A^s$. All three retain the physical boundary bonds. Superscripts $+$ and $-$ on these partition functions always mean the majority constraint. Write $\mu_n^{\eta,s}=\mu_n^\eta(\cdot\mid\mathcal A^s)$ and define
 \begin{equation}\label{eq:F}
  F_n(\eta)=\log Z_n^+(\eta)-\log Z_n^-(\eta).
 \end{equation}
+Then, with $\logistic(z)=e^z/(1+e^z)$,
+\begin{equation}\label{eq:logistic}
+ \logistic(F_n)=\frac{Z_n^+}{Z_n^++Z_n^-}=\mu_n^\eta(\mathcal A^+).
+\end{equation}
+The event $\mathcal A^+$ is increasing and $\mathcal A^-$ is decreasing, so association, Lemma~\ref{lem:neighbor}(ii), gives for every increasing $f$
+\begin{equation}\label{eq:ordered}
+ \mu_n^{\eta,+}(f)\ge\mu_n^\eta(f)\ge\mu_n^{\eta,-}(f).
+\end{equation}
+In particular $\mu_n^{\eta,+}$ dominates $\mu_n^{\eta,-}$ stochastically. At every site outside $B_{k_n}$ the conditional plus-probability under either conditioned law is the unconstrained one, $h_K$ of the neighbour sum.
+
+We apply Section~\ref{sec:dual} to $V=B_n$, whose collar is $C_n$. Its dual graph $G_n$ has $M_n$ positions.
 
 \subsection{Concentration of interval comparisons}
 Order the $M_n$ exterior bonds cyclically around the square, with the two bonds at a corner in their perimeter order. For a cyclic interval $I$, let $\eta^I$ reverse precisely its exterior spins. The empty and full intervals are allowed. For any one of the three partition functions write
@@ -20,25 +31,26 @@ We shall also need a slightly dependent law on the boundary. Fix an odd integer 
 \begin{lemma}[Interval-ratio bounds]\label{lem:ratios}
 For product boundary bias $|p-1/2|\le n^{-2/5}$, and also for the block law with $|q-1/2|\le n^{-2/5}$, the following hold. In the product case take $b=1$.
 \begin{enumerate}
-\item There is an event $H_n$ such that every $D_I$ in the three ensembles is at most $n^{7/10}$ on $H_n$, and
+\item Let $H_n$ be the event that $D_I\le n^{7/10}$ for every cyclic interval $I$ and each of $Z_n,Z_n^+,Z_n^-$. Then
 \begin{equation}\label{eq:H}
  \Pp(H_n^c)\le Cn^2\exp\{-n^{2/5}/(288K^2b^2)\}
 \end{equation}
 for all sufficiently large $n$.
-\item If $m_I\le\ell+2$ and $\ell\ge2$, then, for all sufficiently large $n$ uniformly in $I$ and $\ell$,
+\item Fix $t>0$. If $m_I\le2\ell$ and $\ell\ge1$, then, for all sufficiently large $n$ uniformly in $I$ and $\ell$,
 \begin{equation}\label{eq:localratio}
  \Pp(D_I>t\ell)\le\exp\{-t^2\ell/(64K^2b^2)\}.
 \end{equation}
+\item On $H_n$, $|F_n|\le n^{7/10}$ and $\mu_n^\eta(\mathcal A^s)\ge\tfrac12e^{-n^{7/10}}$ for $s=\pm1$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-We give the concentration calculation. If independent coordinates change a function $G$ by at most $d_j$, its Doob martingale increments have conditional ranges at most $d_j$. For a centred variable in an interval of length $d$, the logarithm of its moment generating function has second derivative at most $d^2/4$ (the variance under the tilted law); integration twice gives an upper bound $s^2d^2/8$. Iterating conditional expectations and optimizing Markov's inequality yields
+We give the calculation behind the bounded-differences inequality of Hoeffding and McDiarmid \cite{Hoeffding63,McDiarmid89}. If independent coordinates change a function $G$ by at most $d_j$, its Doob martingale increments have conditional ranges at most $d_j$. For a centred variable in an interval of length $d$, the logarithm of its moment generating function has second derivative at most $d^2/4$ (the variance under the tilted law); integration twice gives an upper bound $s^2d^2/8$. Iterating conditional expectations and optimizing Markov's inequality yields
 \begin{equation}\label{eq:bd}
  \Pp(G-\E G\ge v)\le
  \exp\left\{-\frac{2v^2}{\sum_j d_j^2}\right\},
  \qquad \Var(G)\le\frac14\sum_jd_j^2.
 \end{equation}
-The variance bound follows as well by orthogonality of martingale increments.
+The same bound holds for the lower tail, and the variance bound follows as well by orthogonality of martingale increments.
 
 For product spins, condition on the bits outside $I$. Reversing $I$ replaces bias $p$ by $1-p$. Coordinatewise coupling of the two product distributions changes an expected $|2p-1|m_I$ bits, giving
 \[
@@ -58,64 +70,122 @@ A whole group has oscillation at most $4Kb$. This proves the displayed estimate 
 
 For $n\ge4$, $M_n\le9n$. The conditional mean is at most $36Kn^{3/5}$, eventually at most $n^{7/10}/2$. Taking $v=n^{7/10}/2$ in \eqref{eq:blocktail} and $m_I\le9n$ gives the exponent in \eqref{eq:H}. There are at most $M_n(M_n+1)$ intervals and three ensembles. Empty intervals contribute zero.
 
-For the local estimate, $m_I\le\ell+2\le2\ell$ and the mean is at most $8Kn^{-2/5}\ell$. Eventually it is at most $t\ell/2$. Use $v=t\ell/2$ in \eqref{eq:blocktail}; this gives \eqref{eq:localratio}. The cutoffs depend on the fixed $K,t,b$, not on $\ell$ or the interval.
+For the local estimate, $m_I\le2\ell$ and the mean is at most $8Kn^{-2/5}\ell$. Eventually it is at most $t\ell/2$. Use $v=t\ell/2$ in \eqref{eq:blocktail}; this gives \eqref{eq:localratio}. The cutoffs depend on the fixed $K,t,b$, not on $\ell$ or the interval.
+
+For (iii), spin reversal maps $\mathcal A^+$ to $\mathcal A^-$, so reversing the full collar gives $Z_n^+(\eta^{C_n})=Z_n^-(\eta)$. Hence the full-interval values of $D_{C_n}$ for $Z_n^+$ and $Z_n^-$ are $-F_n$ and $F_n$, and both are at most $n^{7/10}$ on $H_n$. Then $\mu_n^\eta(\mathcal A^s)=\logistic(sF_n)\ge\logistic(-n^{7/10})\ge\tfrac12e^{-n^{7/10}}$ by \eqref{eq:logistic}.
 \end{proof}
 
-\subsection{The contour injection}
-Draw unit square cells centred at the sites of $B_n$. Each disagreeing nearest-neighbour interior bond is crossed by a dual edge. Draw only these interior edges, so the curves end at the perimeter of the union of the cells. Resolve each four-edge contact by a fixed noncrossing pairing, chosen to agree with the interior deformation convention in \cite[Appendix~A.2]{CV}. It can be effected in disjoint small disks about the dual vertices without moving any crossing of a primal bond. In this split geometry each component is a Jordan curve or a simple boundary-to-boundary arc. Its edge walk never repeats an edge or immediately reverses; it may visit a split dual vertex twice.
-
-\begin{lemma}[Flip comparison]\label{lem:flip}
-For any specified resolved curve $\gamma$ of $\ell$ interior edges, choose one of its sides. In a line-pinned ensemble choose the side disjoint from $J_n$. Let $I$ be the perimeter interval incident to that side. For a closed curve it is empty on the inside and full on the outside. Then
-\begin{equation}\label{eq:flip}
- \mu^\eta(\gamma\text{ occurs})\le e^{-2K\ell}\frac{Z(\eta^I)}{Z(\eta)}.
+\subsection{Macroscopic arcs and the centre}
+\begin{lemma}[Macroscopic arcs]\label{lem:long}
+Let $\mathcal E_n$ be the event that some open curve of the configuration in $B_n$ has diameter at least $n/10$. There is $c>0$ such that for $\eta\in H_n$ and all large $n$
+\begin{equation}\label{eq:long}
+ \mu_n^\eta(\mathcal E_n)\le e^{-cn},\qquad
+ \mu_n^{\eta,s}(\mathcal E_n)\le e^{-cn}\quad(s=\pm1).
 \end{equation}
-For every $\eta\in H_n$ and in each of the three ensembles, the Gibbs probability that some resolved curve of length at least $n^{3/4}$ occurs is at most $Cn^2\rho^{n^{3/4}}/(1-\rho)$ for large $n$; for arcs of length at least $n/4$ the bound is $Cn^2\rho^{n/4}/(1-\rho)$.
+Outside $\mathcal E_n$, for large $n$, the square $B_{\lfloor2n/3\rfloor}$ lies in one free component of Lemma~\ref{lem:openlaw}. We call it the central component and write $s_\Gamma$ for its boundary sign.
 \end{lemma}
 \begin{proof}
-For fixed $\gamma$ and side, flip every interior spin on that side and all incident exterior spins on its perimeter interval. The crossed interior bonds are precisely the $\ell$ edges of $\gamma$. Before the flip they disagree and afterwards they agree. Every other interior bond has both endpoints flipped or both unchanged. Every exterior bond has its two endpoints changed together or unchanged. At a corner the two exterior endpoints are distinct and are handled separately. Thus the new weight is exactly $e^{2K\ell}$ times the old weight. The map is injective, since the same fixed spin subset reverses it; it need not preserve the resolution rule in its image. Summing image weights in the partition function at $\eta^I$ proves \eqref{eq:flip}.
+For distinct positions $a,b$ of $G_n$ choose one collar interval $I$ between them. Lemmas~\ref{lem:arcratio} and~\ref{lem:arcs} bound the probability that an open curve from $a$ to $b$ of diameter at least $n/10$ occurs by $e^{D_I}Ce^{-c_0n/10}$, with $D_I$ for the unrestricted ensemble. On $H_n$ this is at most $Ce^{n^{7/10}-c_0n/10}$. Summing over at most $81n^2$ pairs proves the first bound for large $n$, with any $c<c_0/10$. The second follows from Lemma~\ref{lem:ratios}(iii) after decreasing $c$, since $\mu_n^{\eta,s}(\mathcal E_n)\le2e^{n^{7/10}}\mu_n^\eta(\mathcal E_n)$.
 
-The connected monochromatic line cannot cross a disagreement curve, so the permitted side exists. A loop containing the line requires the outside side and hence the full collar interval; that case is included in $H_n$.
+Outside $\mathcal E_n$ every vertex of an open curve lies within $n/10$ of its endpoint, a position at sup norm $n+\tfrac12$. All sites of $B_{\lfloor2n/3\rfloor}$ are therefore at distance more than $2$ from these vertices for large $n$, and Lemma~\ref{lem:openlaw}(iv) applies.
+\end{proof}
 
-There are $O(n^2)$ possible roots, four initial edge directions and at most three subsequent choices. The traversed edge word fixes its local pairings, so $Cn^2 3^\ell$ overcounts all resolved curves. On $H_n$, $n^{7/10}\le t\ell$ eventually for $\ell\ge n^{3/4}$. The same inequality holds for $\ell\ge n/4$. Sum \eqref{eq:flip} using $3e^{t-2K}=\rho<1$.
+\subsection{A wrong majority in a pure domain}
+\begin{lemma}[Rare wrong majorities]\label{lem:majority}
+There are $C_1,c_1>0$ such that for every $k\ge1$ and every finite domain $V\supset B_k$
+\begin{equation}\label{eq:majority}
+ \mu_V^+\Big(\sum_{x\in B_k}\sigma_x<0\Big)\le C_1e^{-c_1k},\qquad
+ \mu_V^-\Big(\sum_{x\in B_k}\sigma_x>0\Big)\le C_1e^{-c_1k}.
+\end{equation}
+Consequently, for large $n$ and every family $\Gamma$ of open curves outside $\mathcal E_n$,
+\begin{equation}\label{eq:wrongsign}
+ \mu_n^\eta(\mathcal A^{-s_\Gamma}\mid\Gamma)\le\delta_n:=C_1e^{-c_1k_n}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Fix $\eps>0$ with $1-(1+\eps)^{-2}<m/2$ and let $B'=B_{\lfloor(1+\eps)k\rfloor}$. If the spin sum over $B_k$ is negative, the average of $\sigma$ over $B'$ is less than $1-|B_k|/|B'|$, which is below $m/2$ for large $k$. By \eqref{eq:ioffe} the plus law on $B'$ gives this event probability at most $e^{-ck}$ for large $k$. The event is supported on $B_k$, at distance at least $\eps k-1$ from the complement of $B'$, so \eqref{eq:relax} gives
+\[
+ \mu^+\Big(\sum_{x\in B_k}\sigma_x<0\Big)\le e^{-ck}+|B_k|e^{-c_K(\eps k-1)}.
+\]
+After adjusting constants this is at most $C_1e^{-c_1k}$ for every $k\ge1$. By the DLR equations and Lemma~\ref{lem:neighbor}(i), the plus law on $V$ dominates the restriction of $\mu^+$ to $V$. The event is decreasing, which proves the first bound in \eqref{eq:majority}; spin reversal gives the second.
+
+For \eqref{eq:wrongsign}, Lemma~\ref{lem:openlaw}(iii) makes the conditional law on the central component the Ising law with constant boundary $s_\Gamma$. For large $n$ this component contains $B_{k_n}$, and \eqref{eq:majority} applies there with $k=k_n$.
+\end{proof}
+
+\subsection{Short arcs under the majority constraint}
+The majority constraint is invisible near the north side. Let
+\[
+ \mathcal N_n=\{(x,y)\in B_n:y\ge\lceil3n/4\rceil\},
+\]
+a rectangle disjoint from $B_{k_n}$ with at least two rows, for large $n$.
+
+\begin{lemma}[Strip comparison]\label{lem:strip}
+Let $a\ne b$ be positions on the north side of $G_n$, let $I$ be the north interval of collar sites between them, let $\ell\ge1$, and let $\mathcal L$ be a set of open curves from $a$ to $b$ of diameter at least $\ell$, each of whose vertices is at distance at least $2$ from the south, east and west sides of the dual graph of $\mathcal N_n$. Then for large $n$, every $\eta$ and $s=\pm1$,
+\begin{equation}\label{eq:strip}
+ \mu_n^{\eta,s}(\text{some }\gamma\in\mathcal L\text{ occurs})
+ \le Ce^{-c_0\ell}\frac{Z_n^s(\eta^I)}{Z_n^s(\eta)},
+\end{equation}
+with $C$ and $c_0$ from Lemma~\ref{lem:arcs}.
+\end{lemma}
+\begin{proof}
+Write a configuration of $B_n$ as $(\sigma',\xi)$, with $\sigma'$ on $\mathcal N_n$ and $\xi$ on $B_n\setminus\mathcal N_n$. The collar of $\mathcal N_n$ consists of the north collar of $B_n$, the parts of its east and west collars beside $\mathcal N_n$, and the row of $B_n$ just below $\mathcal N_n$. Given $\xi$, its collar word $\eta_\xi$ is read from $\eta$ and $\xi$. The weight factorizes as $W_n^\eta(\sigma',\xi)=W_{\mathcal N_n}^{\eta_\xi}(\sigma')R(\xi)$, where $R(\xi)$ collects the bonds not meeting $\mathcal N_n$. It does not depend on the north collar, whose bonds all meet $\mathcal N_n$. The event $\mathcal A^s$ depends on $\xi$ alone.
+
+The dual graph of $\mathcal N_n$ is the part of $G_n$ at height above $\lceil3n/4\rceil-1$. At vertices at distance at least $2$ from its south, east and west sides, the two graphs have the same incident edges, crossing the same bonds with the same spins. Hence a curve of $\mathcal L$ occurs in $(\sigma',\xi)$ for $B_n$ exactly when it occurs in $\sigma'$ for $\mathcal N_n$ with collar $\eta_\xi$. For each $\xi$, Lemmas~\ref{lem:arcratio} and~\ref{lem:arcs} in $\mathcal N_n$ give
+\[
+ \sum_{\sigma':\,\text{some }\gamma\in\mathcal L\text{ occurs}}W_{\mathcal N_n}^{\eta_\xi}(\sigma')
+ \le Ce^{-c_0\ell}Z_{\mathcal N_n}\big((\eta^I)_\xi\big).
+\]
+Multiply by $R(\xi)$ and sum over $\xi\in\mathcal A^s$. The left side becomes the unnormalized weight of the event intersected with $\mathcal A^s$. The right side becomes $Ce^{-c_0\ell}Z_n^s(\eta^I)$, since reversing $I$ changes only bonds meeting $\mathcal N_n$. Divide by $Z_n^s(\eta)$.
 \end{proof}
 
 \subsection{Separation at a fixed depth}
-For $|x|\le\lfloor n/2\rfloor$, let
+For $|x|\le\lfloor n/2\rfloor$ and a fixed even integer $D\ge12$, let
 \[
  i=(x,n+1),\qquad y=(x,n),\qquad v=(x,n-D).
 \]
-The site $v$ will measure separation between the two pinned ensembles. Write $\mu_n^{\eta,+J}$ and $\mu_n^{\eta,-J}$ for them.
+The site $v$ will measure separation between the two majority-conditioned ensembles. Define the defects
+\[
+ R_{n,v}^s(\eta)=\left|\mu_n^{\eta,s}(\sigma_v=+1)-a_s\right|\qquad(s=\pm1).
+\]
 
 \begin{lemma}[Separation near the north side]\label{lem:tooth}
-For each sign $s$, there are nonnegative functions $R_{n,v}^s$ such that
-\begin{equation}\label{eq:error}
- \mu_n^{\eta,sJ}(\sigma_v\ne s)\le B(K)+R_{n,v}^s(\eta).
-\end{equation}
-For product or fixed-width block laws in Lemma~\ref{lem:ratios}, uniformly over the indicated positions and bias parameters,
+For product or fixed-width block laws in Lemma~\ref{lem:ratios} there are $C_b,c_b>0$, independent of $D$, such that
 \begin{equation}\label{eq:rem}
- \limsup_{n\to\infty}\E R_{n,v}^s\le C_b e^{-c_bD}.
+ \limsup_{n\to\infty}\ \sup_{|x|\le\lfloor n/2\rfloor}\ \sup_{\text{bias}}\ \E R_{n,v}^s\le C_b e^{-c_bD},
 \end{equation}
-In particular the ordered plus-probability gap $d_v$ satisfies
+the supremum running over the permitted bias parameters. The plus-probability gap $d_v=\mu_n^{\eta,+}(\sigma_v=+1)-\mu_n^{\eta,-}(\sigma_v=+1)$ satisfies
 \begin{equation}\label{eq:gap}
- d_v\ge g-R_{n,v}^+-R_{n,v}^-.
+ d_v\ge m-R_{n,v}^+-R_{n,v}^-.
 \end{equation}
 \end{lemma}
 \begin{proof}
-If $v$ disagrees with the pinned line, the parity of disagreements along a path from $v$ to $J_n$ gives a separating curve. A closed separator either encloses $v$ and excludes the line, or encloses the line and excludes $v$. In the former case its interior flip changes no exterior bit, so its cost is $e^{-2K\ell}$ deterministically. A horizontal ray from $v$, which misses dual vertices, meets such an enclosing curve within at most $\ell+1$ possible first crossing edges: a curve of length $\ell$ cannot extend farther in either coordinate from a site it encloses. Orienting the crossing and choosing the subsequent nonbacktracking steps gives the overcount $4(\ell+2)3^{\ell-1}$. The resulting contribution is at most
-\begin{equation}\label{eq:Bsum}
- \sum_{\ell\ge4}4(\ell+2)3^{\ell-1}e^{-2K\ell}=B(K).
+Let $Q_v$ be the union of the vertical path from $(x,0)$ to $v$ and the square $v+B_{D/2}$. Call an open curve short if its diameter $\ell$ is less than $n/10$, and relevant if one of its vertices lies within distance $2$ of $Q_v$. Consider a relevant short curve. Its endpoints lie within $\ell+2$ of $Q_v$, whose points have abscissa within $D/2$ of $x$ and nonnegative ordinate. For large $n$ the south, east and west sides of $G_n$ are farther away, so both endpoints are positions on the north side. The vertex near $Q_v$ has ordinate at most $n-D/2+2$, whereas the endpoints have ordinate $n+\tfrac12$; hence $\ell\ge D/2-2$. Every vertex of the curve is within $\ell$ of the vertex near $Q_v$, hence within horizontal distance $\ell+D/2+2\le2\ell+4$ of $x$. There are therefore at most $C(\ell+1)^2$ endpoint pairs at diameter $\ell$, and the north interval $I$ between the endpoints has $m_I\le\ell$. Every vertex lies within $\ell<n/10$ of a north position, so for large $n$ it is far above the south side of the dual graph of $\mathcal N_n$, and at horizontal distance at most $n/2+2\ell+4<n-2$ from the origin. Lemma~\ref{lem:strip} therefore applies to these curves, uniformly in $|x|\le\lfloor n/2\rfloor$.
+
+For each endpoint pair and each $\ell\ge D/2-2$, charge the event $\{D_I>c_0\ell/2\}$ for $Z_n^s$ once. Off this event, \eqref{eq:strip} bounds the conditional probability of the curves of diameter $\ell$ by $Ce^{-c_0\ell/2}$; on it, the bound is one. Lemma~\ref{lem:ratios}(ii) with $t=c_0/2$ gives, for all large $n$, uniformly in $x$ and the bias,
+\begin{equation}\label{eq:shortarcs}
+ \E\,\mu_n^{\eta,s}(\text{some relevant short curve})
+ \le\sum_{\ell\ge D/2-2}C(\ell+1)^2\left[Ce^{-c_0\ell/2}+e^{-c_0^2\ell/(256K^2b^2)}\right]
+ \le C_be^{-c_bD}.
 \end{equation}
-This counts odd lengths as well and remains an upper bound.
+The disorder exception is charged per endpoint pair and diameter, never per curve.
 
-A loop containing $J_n$ has length at least $2k_n$ and is controlled by the long-curve argument of Lemma~\ref{lem:flip}; its proof applies to any fixed positive multiple of $n^{3/4}$. Open separators of length at least $n/4$ have the second bound there. Their probabilities have expectations tending to zero, by \eqref{eq:H}.
-
-Consider an arc of length $\ell<n/4$. It cannot join opposite sides. Close it by the shorter perimeter route between its endpoints. For endpoints on adjacent sides, that route runs through their common corner. The cap so formed lies in the coordinate bounding rectangle of the path and that perimeter route: any point outside that rectangle can reach infinity along a coordinate ray without crossing the closed curve. Its coordinate span is at most $\ell+O(1)$. Such a cap cannot contain $J_n$, whose distance from the perimeter exceeds $n/4$ for large $n$. To contain the north site $v$ with $|x|\le n/2$ at fixed $D$, a cap of length less than $n/4$ cannot reach a corner or another side. Thus its two endpoints are on the north side, their abscissae are within $\ell+O(1)$ of $x$, and the cap reaches depth $D-O(1)$. With the cell convention above it suffices to sum over $\ell\ge D-2$. The incident collar interval has $m_I\le\ell+2$, since endpoint horizontal displacement is at most the path length, with at most two endpoint bonds added.
-
-There are at most $C(\ell+1)^2$ candidate intervals at this length. Charge each event $\{D_I>t\ell\}$ once. Lemma~\ref{lem:ratios} bounds the expectation of their sum by
+Now fix a family $\Gamma$ of open curves outside $\mathcal E_n$ with no relevant short curve. By Lemma~\ref{lem:openlaw}(iv), $Q_v$ lies in one free component. It meets $B_{\lfloor2n/3\rfloor}$, so this is the central component, which therefore contains $v+B_{D/2}$. By \eqref{eq:relax},
 \[
- C(\ell+1)^2e^{-t^2\ell/(64K^2b^2)}.
+ |\mu_n^\eta(\sigma_v=+1\mid\Gamma)-a_{s_\Gamma}|\le e^{-c_KD/2}.
 \]
-On their complement, root the curve at one of its possible north endpoints and count its edge words. Their total Gibbs probability is at most $C(\ell+1)^3\rho^\ell$, where the extra polynomial factor harmlessly covers endpoint choices. The two tails summed over $\ell\ge\max(2,D-2)$ are bounded by $C_be^{-c_bD}$, after increasing $C_b$ for bounded $D$. In particular the bad-disorder probability is summed over intervals before any curve count; it is not multiplied by $3^\ell$.
+Suppose moreover that $s_\Gamma=s$. For every $[0,1]$-valued $g$, the mixture identity
+\[
+ \mu_n^\eta(g\mid\Gamma,\mathcal A^s)-\mu_n^\eta(g\mid\Gamma)
+ =\mu_n^\eta(\mathcal A^{-s}\mid\Gamma)\left[\mu_n^\eta(g\mid\Gamma,\mathcal A^s)-\mu_n^\eta(g\mid\Gamma,\mathcal A^{-s})\right]
+\]
+and \eqref{eq:wrongsign} show that conditioning further on $\mathcal A^s$ moves the expectation of $g$ by at most $\delta_n$. Hence $|\mu_n^{\eta,s}(\sigma_v=+1\mid\Gamma)-a_s|\le e^{-c_KD/2}+\delta_n$ for such $\Gamma$.
 
-Take $R_{n,v}^s$ to be the sum of these bad-interval indicators, the deterministic good-cap tail, and the conditional probabilities of the long separators. This is nonnegative and bounds all contributions apart from \eqref{eq:Bsum}. Its expectation has the bound \eqref{eq:rem}. Finally $d_v=1-\mu_n^{\eta,+J}(\sigma_v=-)-\mu_n^{\eta,-J}(\sigma_v=+)$ gives \eqref{eq:gap}.
+The remaining families have small $\mu_n^{\eta,s}$-probability. For families outside $\mathcal E_n$ with $s_\Gamma=-s$, \eqref{eq:wrongsign} bounds the unrestricted probability of their intersection with $\mathcal A^s$ by $\delta_n$ times their probability. Their total $\mu_n^{\eta,s}$-probability is therefore at most $\delta_n/\mu_n^\eta(\mathcal A^s)$, which is at most $2\delta_ne^{n^{7/10}}$ on $H_n$ by Lemma~\ref{lem:ratios}(iii). This tends to zero because $7/10<4/5$. On $H_n$ the long families have $\mu_n^{\eta,s}$-probability at most $e^{-cn}$ by Lemma~\ref{lem:long}. Averaging over $\Gamma$ under $\mu_n^{\eta,s}$ gives, on $H_n$,
+\[
+ R_{n,v}^s\le e^{-c_KD/2}+\delta_n+2\delta_ne^{n^{7/10}}+e^{-cn}
+ +\mu_n^{\eta,s}(\text{some relevant short curve}),
+\]
+and $R_{n,v}^s\le1$ on $H_n^c$. Take expectations, and use \eqref{eq:H} and \eqref{eq:shortarcs}. After adjusting $C_b$ and $c_b$ this proves \eqref{eq:rem}. The division by $\mu_n^\eta(\mathcal A^s)$ is applied only to the long and wrong-sign families, whose probabilities carry the factors $e^{-cn}$ and $\delta_n$.
+
+Finally $\mu_n^{\eta,+}(\sigma_v=+1)\ge a_+-R_{n,v}^+$ and $\mu_n^{\eta,-}(\sigma_v=+1)\le a_-+R_{n,v}^-$ give \eqref{eq:gap}.
 \end{proof}

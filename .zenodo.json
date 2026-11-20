@@ -2,8 +2,8 @@
   "title": "Every phase mixture recurs: The planar Ising model with random boundary spins",
   "upload_type": "publication",
   "publication_type": "preprint",
-  "version": "1.0.0",
-  "publication_date": "2026-11-19",
+  "version": "2.0.0",
+  "publication_date": "2026-11-20",
   "creators": [
     {
       "name": "Douglas, Seth",
@@ -14,7 +14,7 @@
       "orcid": "0009-0005-6534-1118"
     }
   ],
-  "description": "Which thermodynamic states recur when an Ising system grows through every square and its exterior spins are independent fair signs? We prove that every convex mixture of the plus and minus phases recurs almost surely in the two-dimensional nearest-neighbour model. The boundary bonds have the bulk coupling strength. The result holds at every finite inverse temperature K > K_P, where K_P = 0.9791163662... is defined by an explicit Peierls sum. It proves, in this range, the full-sequence conjecture of van Enter, Netocny and Schaap. For each fixed interior window of mixture weights, its probability at size n is at least a positive constant times n^(-1/2). The proof combines contour comparisons, uniqueness at a uniform wall, and a count of pivotal boundary changes with arbitrarily small effects on the phase odds. We also prove almost-sure convergence along all sizes to the favoured pure phase for each nonzero boundary bias, and recover the equal two-atom empirical metastate at an explicit temperature range. Thus every mixture recurs, while the sizes near mixed states have density zero.",
+  "description": "Which thermodynamic states recur when an Ising system grows through every square and its exterior spins are independent fair signs? We prove that every convex mixture of the plus and minus phases recurs almost surely in the two-dimensional nearest-neighbour model. The boundary bonds have the bulk coupling strength. The result holds at every fixed inverse temperature above the critical one, that is, throughout the region of phase coexistence. It proves the two-dimensional full-sequence conjecture of van Enter, Netocny and Schaap. For each fixed interior window of mixture weights, its probability at size n is at least a positive constant times n^(-1/2). The proof combines the random-line representation of the dual high-temperature model, a central majority that labels the phase with exponentially small error, uniqueness at a uniform wall, and a count of pivotal boundary changes with arbitrarily small effects on the phase odds. We also prove almost-sure convergence along all sizes to the favoured pure phase for each nonzero boundary bias, and recover the equal two-atom empirical metastate at every temperature of the ordered phase. Thus every mixture recurs, while the sizes near mixed states have density zero.",
   "keywords": [
     "Ising model",
     "random boundary conditions",
@@ -26,5 +26,5 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "language": "eng",
-  "notes": "Preprint. Version 1.0.0. Not formalized in Lean. Text: CC BY 4.0. Build script: MIT or Apache 2.0."
+  "notes": "Preprint. Version 2.0.0. Not formalized in Lean. Text: CC BY 4.0. Build script: MIT or Apache 2.0."
 }
