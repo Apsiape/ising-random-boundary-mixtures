@@ -2,7 +2,7 @@
 
 **The planar Ising model with random boundary spins**
 
-Seth Douglas and Nidhal Mghirbi. Preprint, version 2.1.0, November 2026. [Archive DOI](https://doi.org/10.5281/zenodo.24385704) (all versions); version 2.1.0: to be assigned; version 2.0.0: [10.5281/zenodo.24401253](https://doi.org/10.5281/zenodo.24401253); version 1.0.0: [10.5281/zenodo.24385705](https://doi.org/10.5281/zenodo.24385705)
+Seth Douglas and Nidhal Mghirbi. Preprint, version 2.1.0, November 2026. [Archive DOI](https://doi.org/10.5281/zenodo.24385704) (all versions); version 2.1.0: [10.5281/zenodo.24454765](https://doi.org/10.5281/zenodo.24454765); version 2.0.0: [10.5281/zenodo.24401253](https://doi.org/10.5281/zenodo.24401253); version 1.0.0: [10.5281/zenodo.24385705](https://doi.org/10.5281/zenodo.24385705)
 
 For the two-dimensional nearest-neighbour Ising model on centred squares with independent fair exterior spins and boundary bonds of the bulk strength, every convex mixture of the plus and minus phases is almost surely a subsequential limit along the full sequence of sizes. The result holds at every fixed finite inverse temperature K > K_c = (1/2) log(1 + sqrt 2), that is, throughout the ordered phase. Version 2.1.0 adds the sharp order: for K > log 2 the probability that a large square is at a fixed local distance from both pure phases is of exact order N^(−1/2), as van Enter, Netočný and Schaap conjectured.
 
