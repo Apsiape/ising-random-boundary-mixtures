@@ -1,0 +1,219 @@
+\section{The sharp mixed-state probability}\label{sec:sharp}
+Throughout this section the boundary spins are independent fair signs. For the upper bound assume $K>\log2$, equivalently $4e^{-2K}<1$; in particular the result holds for $K\ge1$. We use the physical collar and the deterministic open-arc decomposition of Section~\ref{sec:dual}. All diameters and distances are in the sup norm. Write
+\[
+ p_n=\mu_n^\eta(\mathcal A^+)=\logistic(F_n),\qquad
+ M=2\lfloor n/2\rfloor+1,
+\]
+so $M\ge n$ is the number of selected north columns. Fix $c_{\rm mac}>0$ for the two exponential bounds in Lemma~\ref{lem:long}, and retain $\delta_n=C_{\rm maj}e^{-c_{\rm maj}k_n}$ from Lemma~\ref{lem:majority}. These are distinct decay constants.
+
+\subsection{Joint deletion and extensive coverage}
+\begin{lemma}[Joint annealed price for specified arcs]\label{lem:jointprice}
+Fix an ordered list of $k\ge1$ pairs $(a_j,b_j)$ of north positions with all $2k$ endpoints distinct and $a_j$ to the left of $b_j$. Let $d_j$ be integers with $b_j^{(1)}-a_j^{(1)}\le d_j$. Let $\mathcal T$ be the event that each designated pair is joined by an open arc of diameter at least $d_j$. There are $d_0=d_0(K)<\infty$ and $c_{\rm del}=c_{\rm del}(K)>0$ such that, if every $d_j\ge d_0$ and $L=\sum_jd_j$, then
+\begin{equation}\label{eq:jointprice}
+ \E_{1/2}\mu_n^\eta(\mathcal T)\le2e^{-c_{\rm del}L}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let $I_j$ be the north collar interval between $a_j$ and $b_j$, and put $U=I_1\mathbin{\triangle}\cdots\mathbin{\triangle}I_k$. Then $|U|\le L$. Boundary transitions add modulo two, so reversing $U$ toggles exactly the designated endpoints, including for overlapping or nested intervals.
+
+Fix a jointly occurring tuple of actual arcs, oriented from their left endpoints. Its trails are edge-disjoint even if they meet at vertices. Delete their edges from the disagreement set $E$. This reduces $|E|$ by their total length and toggles parity only at their endpoints. By Lemma~\ref{lem:sources}, the new edge set represents a configuration with collar $\eta^U$. For this fixed tuple the map is injective: union with the deleted edges recovers $E$. The image may be a proper subset of the edge sets at the reversed collar, which suffices for the upper bound
+\[
+ \sum_{\sigma:\,\text{tuple occurs}}W_n^\eta(\sigma)
+ \le w^{\sum_j|\gamma_j|}Z_n(\eta^U),\qquad w=e^{-2K}.
+\]
+There are at most $4^h$ walks of length $h$ from a specified start, and an arc of diameter at least $d_j$ has length at least $d_j$. Overcounting tuples by all such walks, set
+\[
+ \beta_{\rm w}=2K-\log4>0,\qquad
+ A_{\rm w}=(1-e^{-\beta_{\rm w}})^{-1},\qquad
+ D_U=\log Z_n(\eta^U)-\log Z_n(\eta).
+\]
+The unrestricted quenched probability is bounded by
+\begin{equation}\label{eq:jointquenched}
+ \mu_n^\eta(\mathcal T)
+ \le\min\{1,e^{D_U}A_{\rm w}^k e^{-\beta_{\rm w}L}\}.
+\end{equation}
+Choose $d_0\ge\max\{5,4\log A_{\rm w}/\beta_{\rm w}\}$. Then $k\log A_{\rm w}\le\beta_{\rm w}L/4$, and on $D_U\le\beta_{\rm w}L/4$ the last bound is at most $e^{-\beta_{\rm w}L/2}$.
+
+For this deterministic $U$, condition only on its complementary collar bits. The remaining signs are independent fair signs, and their simultaneous reversal negates $D_U$, so its conditional mean is zero. A bit of $U$ changes each log partition function by at most $2K$, and hence changes $D_U$ by at most $4K$. The martingale calculation \eqref{eq:bd} therefore gives
+\[
+ \Pp_{1/2}(D_U>t\mid\eta_{U^c})
+ \le\exp\{-t^2/(8K^2|U|)\}\qquad(t>0).
+\]
+When $U$ is empty, $D_U=0$. With $t=\beta_{\rm w}L/4$ and $|U|\le L$, use the probability cap one on the exceptional event in \eqref{eq:jointquenched}. Equation~\eqref{eq:jointprice} follows with
+\[
+ c_{\rm del}=\min\{\beta_{\rm w}/2,\beta_{\rm w}^2/(128K^2)\}.
+\]
+This bound is applied separately to each deterministic endpoint specification before summing over specifications. No contour occurrence has been imposed on the disorder law.
+\end{proof}
+
+\begin{lemma}[Extensive coverage has exponential cost]\label{lem:coverage}
+For a fixed even $D\ge12$, let $Q_x$ be the lattice segment from $(x,0)$ to $v_x=(x,n-D)$, for $|x|\le\lfloor n/2\rfloor$. Call an open arc short if its diameter is less than $n/10$, and let $B$ count the selected segments having a short-arc vertex within distance $2$. For every fixed $\theta>0$ there are a fixed even $D=D(K,\theta)$ and $h>0$ such that, for all sufficiently large $n$,
+\begin{equation}\label{eq:coverage}
+ \E_{1/2}\mu_n^\eta(B>\theta M)\le e^{-hn}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+A short arc with a vertex within distance $2$ of $Q_x$ has both endpoints on the north side for large $n$. Indeed each endpoint is within $d+2$ of the segment, where $d<n/10$ is the diameter, and the other sides are at distance at least $n/2$. North positions have ordinate $n+1/2$ while the near vertex has ordinate at most $n-D+2$, so $d\ge D-2$. Each affected abscissa is within $d+2$ of the left endpoint's abscissa. Thus an arc affects at most $2d+5\le3d$ selected segments. These facts also hold when an arc touches the perimeter away from its endpoints.
+
+If $B>\theta M$, record every distinct contributing arc once by its two endpoints and exact integer diameter. Endpoints of different arcs are distinct. The sum $L$ of recorded diameters satisfies $3L\ge B>\theta M\ge\theta n$. This encoding implies the event in Lemma~\ref{lem:jointprice} with these diameters as lower bounds. Choose $D-2\ge d_0$.
+
+Order the encoding by left endpoint. At each north position one can choose no arc, or an integer $d\ge D-2$ and one of at most $d$ right endpoints at horizontal separation at most $d$. There are $2n+2\le4n$ north positions. Apply Lemma~\ref{lem:jointprice} to valid encodings, and only then overcount by dropping compatibility conditions. With
+\[
+ s_D=\sum_{d\ge D-2}d e^{-c_{\rm del}d/2},
+\]
+half of the exponential price pays for $L>\theta n/3$ and half pays for this product count, giving
+\[
+ \E_{1/2}\mu_n^\eta(B>\theta M)
+ \le2e^{-c_{\rm del}\theta n/6}(1+s_D)^{4n}
+ \le2\exp\{-c_{\rm del}\theta n/6+4ns_D\}.
+\]
+Since $s_D\downarrow0$, choose a fixed even $D$ with $4s_D<c_{\rm del}\theta/12$ and increase the size cutoff to absorb the factor $2$. This proves \eqref{eq:coverage}. An arc affecting many segments pays for all of them through its diameter; independence of arc occurrences is not needed.
+\end{proof}
+
+\subsection{Responses, odds and local transfer}
+\begin{lemma}[A linear number of nonvanishing responses]\label{lem:manyresponses}
+There are a fixed even $D$, $a>0$ and collar events $J_n$ such that
+\begin{equation}\label{eq:manyresponses}
+ \Pp_{1/2}(J_n^c)\le Cn^2e^{-c n^{2/5}}+e^{-hn/2},\qquad
+ \#\{i=(x,n+1):|x|\le\lfloor n/2\rfloor,\ \osc_iF_n\ge a\}\ge M/2
+\end{equation}
+on $J_n$, for all large $n$.
+\end{lemma}
+\begin{proof}
+Use $\theta=m/32$ in Lemma~\ref{lem:coverage}. Set $q_\eta=\mu_n^\eta(B>\theta M)$ and $J_n=H_n\cap\{q_\eta\le e^{-hn/2}\}$. Markov's inequality and \eqref{eq:H} give the probability bound. On $J_n$, Lemma~\ref{lem:ratios}(iii) gives, for either sign,
+\[
+ \mu_n^{\eta,s}(B>\theta M)\le2e^{n^{7/10}-hn/2},\qquad
+ M^{-1}\mu_n^{\eta,s}(B)\le\theta+2e^{n^{7/10}-hn/2}.
+\]
+The exponential unrestricted tail is obtained before division by the majority probability.
+
+Let $p_{s,x}$ be the $\mu_n^{\eta,s}$ probability that a short arc comes within distance $2$ of $Q_x$. Its mean over the $M$ columns is exactly $M^{-1}\mu_n^{\eta,s}(B)$. On $H_n$, the probability under $\mu_n^{\eta,s}$ of a long arc or a short-only family with $s_\Gamma=-s$ is at most
+\[
+ b_n=e^{-c_{\rm mac}n}+2e^{n^{7/10}}\delta_n=o(1).
+\]
+For the wrong-sign families, condition on $\Gamma$ and use \eqref{eq:wrongsign} to bound the unrestricted probability of their intersection with $\mathcal A^s$ by $\delta_n$; division then uses Lemma~\ref{lem:ratios}(iii).
+
+For a short-only family with no arc near $Q_x$ and with $s_\Gamma=s$, Lemma~\ref{lem:openlaw}(iv) places the entire connected segment in the central component, since $(x,0)\in B_{\lfloor2n/3\rfloor}$. In a finite plus-boundary domain the one-site plus-probability is at least $a_+$; in a minus-boundary domain it is at most $a_-$. This follows by integrating the infinite pure state's finite-domain specification over its exterior, and comparing each exterior with the constant exterior by Lemma~\ref{lem:neighbor}(i). Conditioning further on $\mathcal A^s$ changes a $[0,1]$-valued expectation by at most $\delta_n$, by its decomposition over the two majority events and \eqref{eq:wrongsign}. Averaging these one-sided estimates and allowing error one for an exceptional family yields
+\begin{equation}\label{eq:responseloss}
+ d_{v_x}\ge m-2\delta_n-2b_n-p_{+,x}-p_{-,x}.
+\end{equation}
+The mean of the nonnegative loss on the right is at most $2\theta+o(1)<m/4$ uniformly on $J_n$. Thus at least $M/2$ gaps satisfy $d_{v_x}\ge m/2$. The depth-$D$ heat-bath paths from $v_x$ to the north row avoid $B_{k_n}$ for large $n$. Lemma~\ref{lem:response} gives \eqref{eq:manyresponses} with $a=\gamma_Dm/2$.
+
+We will also use the same proof with a smaller prescribed $\theta>0$. On its corresponding event $J_n$, \eqref{eq:responseloss} bounds the fraction of columns with $d_{v_x}<m/2$ by $(2/m)(2\theta+o(1))$.
+\end{proof}
+
+\begin{lemma}[Fixed-width odds windows]\label{lem:sharpodds}
+For every fixed $r\ge0$,
+\begin{equation}\label{eq:sharpodds}
+ \Pp_{1/2}(|F_n|\le r)
+ \le\Pp_{1/2}(J_n^c)+\frac{4(r+4K)\sqrt{8n+4}}{aM}
+ =O(n^{-1/2}).
+\end{equation}
+Every fixed bounded odds interval with nonempty interior has probability of exact order $n^{-1/2}$.
+\end{lemma}
+\begin{proof}
+Clip $F_n$ to $[-r-4K,r+4K]$, obtaining an increasing $f$. Lemma~\ref{lem:response} gives $0\le\osc_iF_n\le4K$ everywhere. At a word with $|F_n|\le r$, both values of every coordinate pair lie in the clipping interval, so $\osc_if=\osc_iF_n$ there. If $S$ counts all exterior plus bits, conditioning on the other bits under the original fair product law gives
+\[
+ \Cov(f,\one_{\{\eta_i=+1\}})=\tfrac14\E_{1/2}\osc_if.
+\]
+Since $\Var(S)=(8n+4)/4$ and $\Var(f)\le(r+4K)^2$, nonnegativity of all oscillations and Lemma~\ref{lem:manyresponses} imply
+\[
+ \frac{aM}{2}\Pp_{1/2}(J_n\cap\{|F_n|\le r\})
+ \le\sum_i\E_{1/2}\osc_if
+ =4\Cov(f,S)\le2(r+4K)\sqrt{8n+4}.
+\]
+This is the covariance calculation of Lemma~\ref{lem:anticoncentration}, now with an exceptional probability of smaller order than $n^{-1/2}$. The lower bound on any open subinterval is Proposition~\ref{prop:oddswindow}.
+\end{proof}
+
+\begin{lemma}[Transfer in the local seminorm]\label{lem:seminormtransfer}
+For every fixed finite $X$, on $H_n$ and for all sufficiently large $n$,
+\begin{equation}\label{eq:seminormtransfer}
+ \|\mu_n^\eta-\nu_{p_n}\|_X\le e_n(X),\qquad
+ e_n(X)\le C_Xe^{-c_X n^{4/5}}.
+\end{equation}
+This transfer estimate itself holds at every $K>K_c$.
+\end{lemma}
+\begin{proof}
+Assign a short-only arc family the sign $s_\Gamma$ of its central component; assign sign plus to every long-arc family. Let $u$ be the unrestricted thermal probability of assigned sign plus. The probability that this sign disagrees with the central majority is at most $\delta_n+\mu_n^\eta(\mathcal E_n)$, so the same bounds $|p_n-u|$.
+
+For a short-only family, the fixed set $X$ eventually lies at distance at least $n/2$ from the complement of the central component. Lemma~\ref{lem:openlaw}(iii) and \eqref{eq:relax}, uniformly over all supremum-norm-one tests supported on $X$, bound the conditional seminorm distance from $\mu^{s_\Gamma}$ by $|X|e^{-c_K n/2}$. This is precisely the arbitrary-domain estimate \cite[(A.8)]{CV}, with spin reversal for minus boundary. For a long-arc family the distance is at most $2$. Average over families and use $\|\nu_{p_n}-\nu_u\|_X\le2|p_n-u|$ to obtain
+\[
+ \|\mu_n^\eta-\nu_{p_n}\|_X
+ \le |X|e^{-c_K n/2}+4e^{-c_{\rm mac}n}+2\delta_n.
+\]
+This proves \eqref{eq:seminormtransfer}; only the inputs valid for $K>K_c$ were used.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:sharp} for odd sides]
+Put $\Delta_X=\|\mu^+-\mu^-\|_X\le2$. Homogeneity of the seminorm gives
+\begin{equation}\label{eq:midpointdistance}
+ \min_{s=\pm}\|\nu_{p_n}-\mu^s\|_X
+ =\Delta_X\min(p_n,1-p_n)
+ =\frac{\Delta_X}{1+e^{|F_n|}}.
+\end{equation}
+Choose a fixed $r$ with $2/(1+e^r)<\eps/2$ and take $e_n(X)<\eps/2$. On $H_n$, the departure event in Theorem~\ref{thm:sharp} then implies $|F_n|\le r$. Equations~\eqref{eq:sharpodds} and \eqref{eq:H} prove the upper bound; increasing its constant includes the finitely many smaller sizes.
+
+If $0<\eps<\Delta_X/2$, choose a compact weight interval of positive length around $1/2$ on which $\Delta_X\min(t,1-t)$ exceeds $\eps$ by a fixed positive margin. Its logit image contains a nonempty bounded open interval. Proposition~\ref{prop:oddswindow}, minus $\Pp_{1/2}(H_n^c)=o(n^{-1/2})$, and Lemma~\ref{lem:seminormtransfer} give the matching lower bound. This lower-bound argument uses only $K>K_c$.
+
+The calibrated weight satisfies $|T_n-p_n|\le e_n(\{0\})/m$ on $H_n$. For $0<u<v<1$, a calibrated hit forces bounded odds on $H_n$ and contains a smaller nonempty open odds interval for large $n$. Thus its probability has exact order $n^{-1/2}$ for $K>\log2$. If $\eps>\Delta_X/2$, \eqref{eq:midpointdistance} and \eqref{eq:seminormtransfer} exclude the departure event on $H_n$ eventually; its probability is at most $Cn^2e^{-c n^{2/5}}$. At $\eps=\Delta_X/2$ there is no open interval with a strict distance margin, and only the upper bound is claimed.
+\end{proof}
+
+\subsection{Every integer side length}
+\begin{corollary}[Odd and even sides]\label{cor:allsides}
+Let $V_{2n+1}=B_n$ and $V_{2n}=[-n+1,n]^2\cap\Z^2$, with fair independent spins on their physical collars and bulk-strength boundary bonds. The conclusions of Theorem~\ref{thm:sharp} hold along every integer side length $N$. The lower bounds for interior odds and calibrated-weight windows, and for $0<\eps<\Delta_X/2$, hold for both parities at every $K>\log2$, and for odd side lengths at every $K>K_c$.
+\end{corollary}
+\begin{proof}
+For an even side retain $B_{k_n}$ as the odd central majority box, the north columns and $Q_x$ above, and use the $8n$ physical collar bits. The two majority events still partition the configurations. Lemmas~\ref{lem:sources} and~\ref{lem:openlaw} apply to this rectangle without change. So does Lemma~\ref{lem:jointprice}. In Lemma~\ref{lem:coverage} the other sides are at distance at least $n/2-1$ from the segments, which still exceeds $n/10+2$ eventually; there are at most $2n+2$ north positions. Thus the same extensive-coverage estimate holds.
+
+\paragraph{Normalization and the central component.}
+Define $H_n$ by the same cutoff $n^{7/10}$ for all cyclic-interval comparisons and each of the three partition sums. The fair conditional concentration calculation in Lemma~\ref{lem:jointprice} applies also to a majority-constrained sum, since the constraint is independent of the collar. Each interval has at most $8n$ bits. A union bound over at most $3(8n+1)^2$ choices gives $\Pp_{1/2}(H_n^c)\le Cn^2e^{-c n^{2/5}}$. Full-collar reversal exchanges the constrained sums, giving $|F_n|\le n^{7/10}$ and majority probabilities at least $\tfrac12e^{-n^{7/10}}$ on $H_n$.
+
+For a specified pair of perimeter positions the deletion injection works on any side, using either collar interval between them. Summing walks of length at least $\lceil n/10\rceil$ gives at most $A_{\rm w}e^{-\beta_{\rm w}n/10}$. On $H_n$ the probability of a long arc for this pair is at most $A_{\rm w}e^{n^{7/10}-\beta_{\rm w}n/10}$. Sum over at most $(8n)^2$ pairs and divide, if needed, by the majority probability. The unrestricted and both constrained long-arc probabilities are therefore at most $e^{-c_{\rm mac}n}$ after choosing a suitable $c_{\rm mac}>0$ and increasing the cutoff. With no long arc every arc vertex is within $n/10$ of the dual perimeter. Hence $B_{\lfloor2n/3\rfloor}$ is at distance greater than $2$ from all open arcs and lies in one free component. Lemma~\ref{lem:majority} applies to every constant-boundary domain containing $B_{k_n}$. These facts give the central-component inputs used above for even sides.
+
+\paragraph{The response and upper bound.}
+Association, Lemma~\ref{lem:neighbor}(ii), orders the two majority-conditioned laws as in \eqref{eq:ordered}. Off $B_{k_n}$ their one-site conditionals are unchanged. Propagate the gap from $v_x$ to the top row along $D$ edges by Lemma~\ref{lem:neighbor}(iii), giving a top-row gap at least $\kappa_K^Dd_{v_x}$. Flipping a minus collar bit tilts either constrained law by $e^{2K\sigma_y}$. The logarithm of its expectation has derivative at least $1-e^{-4K}$ in the plus-probability at $y$. Starting with a plus bit uses minus the logarithm of the reverse tilt and gives the same bound. The log change of either constrained sum is at most $2K$, giving upper response $4K$. Ordering and the tilt also give nonnegative responses at every other collar coordinate. Thus Lemma~\ref{lem:response} holds with no parity assumption. Lemmas~\ref{lem:manyresponses}--\ref{lem:seminormtransfer} and the odd-side completion now apply, with $8n$ in the covariance calculation. This proves all the even-side upper bounds and the large-$\eps$ stretched-exponential estimate.
+
+\paragraph{Buffered centres and drift for the lower bound.}
+Fix $z\in\R$ and $\xi>0$. Divide the selected north bits into complete blocks of odd length $\ell=2L+1$, leaving any incomplete block as singletons. A centre is active if all its $2L$ buffer bits are plus. Choose $L=L(K,\xi)$ so that every active jump is less than $\xi$, uniformly over all other bits and large $n$. Here is why the choice is independent of volume parity. With the centre plus, condition either majority law outside the half-box of width $2L+1$ and depth $L+1$ below the block. This box avoids the central majority. Monotonicity brackets both top-site marginals between the laws with the common plus north wall and all-plus or all-minus exterior on the other three sides. As $L$ grows, every subsequential limit is a Gibbs state for the half-plane with wall coupling $h=1$. Uniqueness at that wall, as established in Section~\ref{sec:model} using \cite[(3.17), (3.25)]{PV}, makes the difference of the two marginals tend to zero. The reverse log tilt has absolute derivative at most $e^{4K}-1$, so the jump is less than $\xi$ for a fixed sufficiently large $L$.
+
+Let $\pi=2^{-2L}$ and let $R$ be the number of active centres. At fairness the activations are independent, and $\E R\ge\pi M/(2\ell)$ eventually. The bounded-differences estimate \eqref{eq:bd} on the block indicators gives
+\[
+ \Pp_{1/2}(R<\pi M/(4\ell))\le e^{-c_L n}.
+\]
+Run the proof of Lemma~\ref{lem:manyresponses} with $\theta$ so small that $4\theta/m<\pi/(16\ell)$. Its final observation shows that fewer than $\pi M/(8\ell)$ columns have $d_{v_x}<m/2$ on the corresponding $J_n$, eventually. Consequently at least $\pi M/(8\ell)$ active centres have responses at least $a=\gamma_Dm/2$ except on a fair event of probability $o(1)$. Here $D$ and $a$ are fixed after $L$ and before choosing a tilt constant.
+
+Expose all buffers, singletons and inactive centres, retaining their fair law. Conditional on these data give the active centres independent plus-probability $q$, and denote expectation by $\E_q$. For any fixed $A_0$, this high-probability response statement remains true uniformly on $|q-1/2|\le A_0/\sqrt n$. Indeed the conditional second moment, under fairness, of the likelihood ratio is
+\[
+ (1+4(q-1/2)^2)^R\le e^{8A_0^2},
+\]
+since $R\le M\le2n$ for large $n$; Cauchy--Schwarz bounds the tilted failure probability by $e^{4A_0^2}$ times the square root of its fair probability. Differentiate the finite conditional product polynomial and average. The derivative sums the expected active oscillations, and hence, eventually and uniformly in that fixed window,
+\begin{equation}\label{eq:evendrift}
+ \frac d{dq}\E_qF_n\ge c'_L n,\qquad
+ c'_L=\frac{a\pi}{16\ell}>0.
+\end{equation}
+The coefficient is independent of $A_0$. At fairness spin reversal gives $\E_{1/2}F_n=0$. Complete blocks and singletons are independent groups under each $q$; replacing a group changes $F_n$ by at most $4K\ell$, and there are at most $8n$ groups. The martingale variance bound in \eqref{eq:bd} therefore gives $\Var_q(F_n)\le C_Ln$ with $C_L=32K^2\ell^2$.
+
+\paragraph{A uniform permutation and an independent binomial prefix.}
+Choose a fixed $A_0$ sufficiently large that $4C_L/(c'_LA_0)^2<1/16$. For $q_\pm=1/2\pm A_0/\sqrt n$, integration of \eqref{eq:evendrift} and Chebyshev give, for all large $n$,
+\[
+ \Pp_{q_-}(F_n\ge z)<1/16,\qquad
+ \Pp_{q_+}(F_n\le z)<1/16.
+\]
+Couple these laws with one independent uniform threshold for each active centre, sharing the exposed data. Conditional on the data, the endpoint plus counts are binomial with parameters $(R,q_\pm)$. Their means are within $2A_0\sqrt n$ of $R/2$ and their variances are at most $n/2$. Chebyshev permits a fixed $B_0$ such that both counts lie within $B_0\sqrt n$ of $R/2$, except on an event of probability less than $1/8$. Together with the activation bound, with probability at least $1/2$ the counts lie in this band, $R\ge\pi M/(4\ell)$, and the endpoint odds strictly straddle $z$.
+
+In increasing threshold order the active flips add one plus at a time and increase the odds by less than $\xi$. The straddling event therefore yields a prefix of length $j$ satisfying
+\begin{equation}\label{eq:prefix}
+ |j-R/2|\le B_0\sqrt n,\qquad |F_n-z|<\xi.
+\end{equation}
+Conditional on the exposed data, the threshold order is a uniform permutation. Although straddling also uses the ordered threshold values, its implication that a qualifying prefix exists depends only on this permutation and the data. Thus the marginal probability of existence of such a prefix, with $R\ge\pi M/(4\ell)$, is at least $1/2$.
+
+Independently sample $J\sim\operatorname{Bin}(R,1/2)$ and assign plus exactly to the first $J$ members of the permutation. This produces the fair conditional word: conditional on $J=j$, each size-$j$ subset is equally likely, and its unconditional probability is $\binom Rj2^{-R}/\binom Rj=2^{-R}$.
+
+For $\pi n/(4\ell)\le R\le2n$, every admissible $j$ in the band \eqref{eq:prefix} has binomial mass at least $c_{B_0,L}/\sqrt n$. To verify this elementary bound, Chebyshev puts at least $3/4$ of the mass within $\sqrt R$ of $R/2$. Its largest, central mass is therefore at least $(3/4)/(2\sqrt R+2)$. Adjacent binomial masses have ratio $(R-j)/(j+1)$. Moving away from a central mode, symmetry and the linear lower bound on $R$ show that each outward ratio in the indicated band is at least $1-C_{B_0,L}/\sqrt n$ for large $n$. There are at most $B_0\sqrt n+2$ steps, so multiplication loses only a fixed positive factor. This proves the mass bound.
+
+For each permutation admitting \eqref{eq:prefix}, choose its smallest qualifying prefix length. The independent $J$ hits that length with probability at least $c_{B_0,L}/\sqrt n$. Averaging over the permutations and the original exposed data yields
+\[
+ \Pp_{1/2}(|F_n-z|<\xi)\ge c' n^{-1/2}.
+\]
+The local transfer and the strict-margin argument above give the even-side calibrated-window and separation lower bounds.
+\end{proof}

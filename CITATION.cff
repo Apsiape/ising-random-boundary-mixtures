@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Please cite this preprint using the metadata below."
 type: software
 title: "Every phase mixture recurs: The planar Ising model with random boundary spins"
-version: 2.0.0
-date-released: '2026-11-20'
+version: 2.1.0
+date-released: '2026-11-22'
 doi: 10.5281/zenodo.24385704
 license: CC-BY-4.0
 authors:
@@ -19,7 +19,7 @@ keywords:
   - chaotic size dependence
   - metastates
   - Gibbs measures
-abstract: "For the planar nearest-neighbour Ising model with independent fair exterior spins and boundary bonds of the bulk strength, every convex phase mixture recurs almost surely along all square sizes at every fixed finite K > K_c = (1/2) log(1 + sqrt 2), that is, throughout the ordered phase. Each fixed interior mixture window has probability at least a positive constant times n^(-1/2). Fixed nonzero bias selects its favoured pure phase almost surely along all square sizes. The fair empirical metastate has equal masses at the pure endpoints, recovering van Enter, Netocny and Schaap (2005, Theorem 3.4) throughout the ordered phase."
+abstract: "Which thermodynamic states recur when an Ising system grows through every square and its exterior spins are independent fair signs? We prove that every convex mixture of the plus and minus phases recurs almost surely in the two-dimensional nearest-neighbour model with bulk-strength boundary bonds, at every fixed inverse temperature K > K_c. We also prove the O(N^(−1/2)) upper bound on the probability of a fixed local departure from both pure phases for every K > log 2 (in particular K ≥ 1), where N is the side length. Together with the lower bound, this gives exact order N^(−1/2) for every fixed finite window X and 0 < ε < ½‖μ⁺ − μ⁻‖_X; for larger ε the probability is stretched-exponentially small. Thus the paper resolves both conjectures of van Enter, Netočný and Schaap: full-sequence recurrence throughout coexistence, and the quantitative order in its sharp threshold form for K > log 2. The lower bound holds at every K > K_c for odd side lengths; the sharp upper bound for K_c < K ≤ log 2 remains open. The proof combines dual open arcs, a central majority phase label, uniqueness at a uniform wall, and buffered boundary crossings. Joint deletion of arcs gives an exponential bound on extensive coverage, and clipping the phase odds yields the sharp upper exponent. Both parities of the side length are included. We also prove almost-sure convergence along all sizes to the favoured pure phase for each nonzero boundary bias, and recover the equal two-atom empirical metastate throughout the ordered phase. Every mixture recurs, while the sizes near mixed states have density zero."
 preferred-citation:
   type: article
   title: "Every phase mixture recurs: The planar Ising model with random boundary spins"

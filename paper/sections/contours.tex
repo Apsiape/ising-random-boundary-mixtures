@@ -92,14 +92,14 @@ Outside $\mathcal E_n$ every vertex of an open curve lies within $n/10$ of its e
 
 \subsection{A wrong majority in a pure domain}
 \begin{lemma}[Rare wrong majorities]\label{lem:majority}
-There are $C_1,c_1>0$ such that for every $k\ge1$ and every finite domain $V\supset B_k$
+There are $C_{\rm maj},c_{\rm maj}>0$ such that for every $k\ge1$ and every finite domain $V\supset B_k$
 \begin{equation}\label{eq:majority}
- \mu_V^+\Big(\sum_{x\in B_k}\sigma_x<0\Big)\le C_1e^{-c_1k},\qquad
- \mu_V^-\Big(\sum_{x\in B_k}\sigma_x>0\Big)\le C_1e^{-c_1k}.
+ \mu_V^+\Big(\sum_{x\in B_k}\sigma_x<0\Big)\le C_{\rm maj}e^{-c_{\rm maj}k},\qquad
+ \mu_V^-\Big(\sum_{x\in B_k}\sigma_x>0\Big)\le C_{\rm maj}e^{-c_{\rm maj}k}.
 \end{equation}
 Consequently, for large $n$ and every family $\Gamma$ of open curves outside $\mathcal E_n$,
 \begin{equation}\label{eq:wrongsign}
- \mu_n^\eta(\mathcal A^{-s_\Gamma}\mid\Gamma)\le\delta_n:=C_1e^{-c_1k_n}.
+ \mu_n^\eta(\mathcal A^{-s_\Gamma}\mid\Gamma)\le\delta_n:=C_{\rm maj}e^{-c_{\rm maj}k_n}.
 \end{equation}
 \end{lemma}
 \begin{proof}
@@ -107,7 +107,7 @@ Fix $\eps>0$ with $1-(1+\eps)^{-2}<m/2$ and let $B'=B_{\lfloor(1+\eps)k\rfloor}$
 \[
  \mu^+\Big(\sum_{x\in B_k}\sigma_x<0\Big)\le e^{-ck}+|B_k|e^{-c_K(\eps k-1)}.
 \]
-After adjusting constants this is at most $C_1e^{-c_1k}$ for every $k\ge1$. By the DLR equations and Lemma~\ref{lem:neighbor}(i), the plus law on $V$ dominates the restriction of $\mu^+$ to $V$. The event is decreasing, which proves the first bound in \eqref{eq:majority}; spin reversal gives the second.
+After adjusting constants this is at most $C_{\rm maj}e^{-c_{\rm maj}k}$ for every $k\ge1$. By the DLR equations and Lemma~\ref{lem:neighbor}(i), the plus law on $V$ dominates the restriction of $\mu^+$ to $V$. The event is decreasing, which proves the first bound in \eqref{eq:majority}; spin reversal gives the second.
 
 For \eqref{eq:wrongsign}, Lemma~\ref{lem:openlaw}(iii) makes the conditional law on the central component the Ising law with constant boundary $s_\Gamma$. For large $n$ this component contains $B_{k_n}$, and \eqref{eq:majority} applies there with $k=k_n$.
 \end{proof}
